@@ -140,7 +140,7 @@ publish/
 *.[Pp]ublish.xml
 *.azurePubxml
 
-# TODO: Un-comment the next line if you do not want to checkin 
+# TODO: Un-comment the next line if you do not want to checkin
 # your web deploy settings because they may include unencrypted
 # passwords
 #*.pubxml
@@ -253,3 +253,8 @@ ModelManifest.xml
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+/EatMeApp/frontend/bower_components
+/EatMeApp/frontend/node_modules
+/EatMeApp/frontend/dist
+/EatMeApp/frontend/.tmp
