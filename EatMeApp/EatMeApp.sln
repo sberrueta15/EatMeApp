@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "EatMeApp", "src\EatMeApp\EatMeApp.xproj", "{6E95CA3C-8596-4B74-91AB-60321295D0CD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{01E9E17C-945E-46D9-A61E-64185AE477CF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,11 +24,16 @@ Global
 		{6E95CA3C-8596-4B74-91AB-60321295D0CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E95CA3C-8596-4B74-91AB-60321295D0CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E95CA3C-8596-4B74-91AB-60321295D0CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01E9E17C-945E-46D9-A61E-64185AE477CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01E9E17C-945E-46D9-A61E-64185AE477CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01E9E17C-945E-46D9-A61E-64185AE477CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01E9E17C-945E-46D9-A61E-64185AE477CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{6E95CA3C-8596-4B74-91AB-60321295D0CD} = {BBE4BF09-1904-4E92-A791-E4FB769F9482}
+		{01E9E17C-945E-46D9-A61E-64185AE477CF} = {BBE4BF09-1904-4E92-A791-E4FB769F9482}
 	EndGlobalSection
 EndGlobal
