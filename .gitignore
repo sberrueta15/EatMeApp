@@ -9,7 +9,6 @@
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
-EatMeApp/global.json
 
 # Build results
 [Dd]ebug/
