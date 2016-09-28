@@ -5,7 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
-namespace WebApplication1.EntityFramework
+namespace EatMeApp.EntityFramework
 {
     public class EFDbContext : DbContext
     {
