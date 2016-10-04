@@ -1,9 +1,9 @@
-namespace WebApplication1.Migrations
+namespace EatMeApp.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialMigration : DbMigration
+    public partial class Events : DbMigration
     {
         public override void Up()
         {

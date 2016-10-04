@@ -11,6 +11,8 @@ namespace EatMeApp.EntityFramework
     {
         public EFDbContext()
         {
+            Database.SetInitializer<EFDbContext>(new CreateDatabaseIfNotExists<EFDbContext>());
+
         }
 
         public DbSet<Event> Events { get; set; }
