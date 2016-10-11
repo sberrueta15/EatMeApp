@@ -4,32 +4,51 @@
  * @ngdoc overview
  * @name aaApp
  * @description
- * # aaApp
+ * # EatMeApp
  *
  * Main module of the application.
  */
 angular
-  .module('aaApp', [
+  .module('EatMeApp', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'ui.router',
+    'textAngular',
+    'uiGmapgoogle-maps',
+    'ngGeolocation'
   ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
+  .config(['$stateProvider','$urlRouterProvider','uiGmapGoogleMapApiProvider',
+    function ($stateProvider,$urlRouterProvider,GoogleMapApiProviders,routeProvider) {
+
+
+
+      $stateProvider
+      .state('chef',{
+        url:'/chef',
+        templateUrl:'views/base.html',
+        controller:'BaseCtrl',
+        controllerAs:'base',
+        abstract:true,
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
+
+      .state('chef.crear-evento',{
+        url:'/crear-evento',
+        templateUrl:'views/evento.crear.html',
+        controller:'EventoCtrl',
+        controllerAs:'evento',
       })
-      .otherwise({
-        redirectTo: '/'
+
+      $urlRouterProvider.otherwise('/chef/crear-evento');
+
+      GoogleMapApiProviders.configure({
+          //    key: 'your api key',
+          v: '3.20', //defaults to latest 3.X anyhow
+          libraries: 'weather,geometry,visualization'
       });
-  });
+
+
+  }]);

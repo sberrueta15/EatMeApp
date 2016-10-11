@@ -5,9 +5,9 @@
  * @name aaApp.controller:AboutCtrl
  * @description
  * # AboutCtrl
- * Controller of the aaApp
+ * Controller of the EatMeApp
  */
-angular.module('aaApp')
+angular.module('EatMeApp')
   .controller('AboutCtrl', function () {
     this.awesomeThings = [
       'HTML5 Boilerplate',

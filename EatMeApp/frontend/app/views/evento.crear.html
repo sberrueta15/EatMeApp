@@ -1,0 +1,57 @@
+<div class="container">
+
+	<h1 class="page-header">Crear evento</h1>
+
+	<form method="post" name="form" novalidate>
+
+		<div class="form-group">
+			<label for="nombre_comida" name="nombre_comida" class="label-control">Nombre:</label>
+			<input type="input" class="form-control" name="nombre_comida" ng-model="evento.new_evento.nombre" required>
+			<p ng-show="form.nombre_comida.$invalid && !form.nombre_comida.$pristine" class="help-block">Por favor, ingrese un Nombre.</p>
+		</div>
+
+		<div class="form-group">
+			<label for="descripcion_comida" name="descripcion_comida" class="label-control">Descripcion:</label>
+			<text-angular ta-toolbar={{evento.ta_toolbar}} ng-model="evento.new_evento.descripcion" ta-paste="stripFormat($html)"></text-angular>
+		</div>
+
+		<div class="form-group">
+			<label for="tipo_comida" class="label-control">Vegetariano?: </label>
+			<input type="checkbox" class="checkbox" id="tipo_comida" ng-model="evento.new_evento.es_vegetariano">Si 🌽
+		</div>
+
+		<div class="form-group">
+			<label class="label-control" for="precio_comida">Precio: </label>
+			<div class="input-group">
+				<div class="input-group-addon">$</div>
+				<input type="number" class="form-control" name="precio_comida" id="precio_comida" ng-model="evento.new_evento.precio" placeholder=""
+					required>
+
+			</div>
+			<p ng-show="form.precio_comida.$invalid && !form.precio_comida.$pristine" class="help-block">Por favor, ingrese un precio valido.</p>
+
+		</div>
+
+		<div class="form-group">
+			<label for="cupos_comida">Cantidad de cupos:</label>
+			<input type="number" class="form-control" name="cupos_comida" id="cupos_comida" ng-model="evento.new_evento.cantidad_cupos" placeholder="" required>
+			<p ng-show="form.cupos_comida.$invalid && !form.cupos_comida.$pristine" class="help-block">Por favor, ingrese un cupo valido.</p>
+      
+    </div>
+
+		<div class="form-group">
+			<ui-gmap-google-map center="evento.map.center" zoom="evento.map.zoom" options="evento.map.options" events="evento.map.events"
+				draggable="true">
+				<ui-gmap-marker ng-repeat="m in evento.map.markers" coords="m.coords" icon="m.icon" idkey="m.id"></ui-gmap-marker>
+			</ui-gmap-google-map>
+		</div>
+
+		<div class="form-group">
+			<div class="center-block">
+				<button type="submit" ng-click="evento.crearEvento()"class="btn btn-lg btn-primary center-block " ng-disabled="form.$invalid">
+          Crear Evento!
+       </button>
+			</div>
+		</div>
+	</form>
+</div>
