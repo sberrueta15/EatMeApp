@@ -42,6 +42,14 @@ angular
         controllerAs:'evento',
       })
 
+      .state('chef.dashboard',{
+        url:'/dashboard',
+        templateUrl:'views/dashboard.html',
+        controller:'DashboardCtrl',
+        controllerAs:'dashboard',
+      })
+
+
       $urlRouterProvider.otherwise('/chef/crear-evento');
 
       GoogleMapApiProviders.configure({
