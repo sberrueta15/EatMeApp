@@ -15,11 +15,18 @@ angular.module('EatMeApp')
       // Variables
       // --------------------------------------------------------------------------------
       var vm = this;
+      vm.new_evento = {}
+      vm.tipos_comida = [
+        {name:"Celiaco",value:"Celiac"},
+        {name:"Vegano",value:"Vegan"},
+        {name:"Vegeteriano",value:"Vegeterian"},
+        {name:"Sin Restricciones",value:"NoRestriction"},
+      ]
+      vm.new_evento.tipo_comida = vm.tipos_comida[3]
       vm.crearEvento = crearEvento;
 
       // wysiwyg
       vm.ta_toolbar = "[['bold','italics','underline'],['ul','ol']]"
-      vm.new_evento = {}
 
       // maps
       vm.myCurrentPosition = { latitude: -34.8894797, longitude: -56.1614878 }
@@ -67,9 +74,35 @@ angular.module('EatMeApp')
       };
 
       function crearEvento(){
+        /*
+       * "Title":"Segundo Evento!",
+       * "Description": "Vamo lo pibee!",
+        "FoodType": "Celiac","Vegan","Vegeterian","NoRestriction"
+        "TotalTickets": 10,
+        "TicketPrice": 75,
+        "SoldTickets": 0,
+        "LocationX": 0,
+        "LocationY": 0,
+        "Id": 2
+         */
         var obj  = {} //el json a mandar
-        //eventoService.crearEvento(vm.new_evento)
-        console.log("creando evento!")
+
+        obj.title = vm.new_evento.nombre
+        obj.description = vm.new_evento.descripcion
+        obj.footType = vm.new_evento.tipo_comida.value
+        obj.ticketPrice = vm.new_evento.precio
+        obj.totalTickets = vm.new_evento.cantidad_cupos
+        obj.locationX = vm.new_evento.coords.latitude
+        obj.locationY = vm.new_evento.coords.longitude
+        console.log(obj)
+        eventoService.crearEvento(obj)
+          .then(
+            function(succsess){
+              console.log("Evento creado!")
+            },
+            function(error){
+              console.log("error!",error)
+            })
       }
 
     }]);
