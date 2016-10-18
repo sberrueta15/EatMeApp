@@ -12,7 +12,8 @@ angular.module('EatMeApp')
 
     var base = 'api/evento'
     var service = {
-      crearEvento: crearEvento
+      crearEvento: crearEvento,
+      getEvento: getEvento,
     }
     return service
 
@@ -26,6 +27,18 @@ angular.module('EatMeApp')
           deferred.reject(error);
         })
 
+        return deferred.promise;
+    }
+
+    function getEvento(){
+      var deferred = $q.defer();
+      $http.get(base)
+        .success(function(success){
+          deferred.resolve(success);
+        })
+        .error(function(error){
+          deferred.reject(error);
+        })
         return deferred.promise;
     }
 

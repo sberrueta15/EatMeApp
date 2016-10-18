@@ -25,6 +25,9 @@ module.exports = function (grunt) {
     dist: 'dist'
   };
 
+    grunt.loadNpmTasks('grunt-connect-proxy');
+
+
   // Define the configuration for all the tasks
   grunt.initConfig({
 
@@ -74,23 +77,30 @@ module.exports = function (grunt) {
         // Change this to '0.0.0.0' to access the server from outside.
         hostname: '0.0.0.0',
         livereload: 35729
-      },
+      },proxies: [{
+      context: '/api', // the context of the data service
+      //host: '192.168.1.44', // wherever the data service is running
+      host: '0.0.0.0', // wherever the data service is running
+      //host: '10.8.13.238', // wherever the data service is running
+      port: 3000 , // the port that the data service is running on
+      rewrite: {'^/api': '/'}
+      }],
       livereload: {
         options: {
           open: true,
           middleware: function (connect) {
-            return [
+            var middlewares = []; 
+            middlewares.push(require('grunt-connect-proxy/lib/utils').proxyRequest); // Setup the proxy
+            
+            middlewares.push(
               connect.static('.tmp'),
               connect().use(
                 '/bower_components',
-                connect.static('./bower_components')
-              ),
-              connect().use(
-                '/app/styles',
-                connect.static('./app/styles')
+              connect.static('./bower_components')
               ),
               connect.static(appConfig.app)
-            ];
+              );
+            return middlewares;
           }
         }
       },
@@ -437,6 +447,8 @@ module.exports = function (grunt) {
       'wiredep',
       'concurrent:server',
       'postcss:server',
+      'configureProxies:server',
+
       'connect:livereload',
       'watch'
     ]);
