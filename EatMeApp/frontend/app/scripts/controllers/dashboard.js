@@ -8,10 +8,20 @@
  * Controller of the EatMeApp
  */
 angular.module('EatMeApp')
-  .controller('DashboardCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+  .controller('DashboardCtrl',['eventoService','$scope', function (eventoService,$scope) {
+    var vm = this;
+
+    vm.getEventos = getEventos;
+
+
+
+    // Activate
+    getEventos();
+
+    function getEventos(){
+    eventoService.getEvento().then(function(success){
+      vm.eventos = success
+    })
+    }
+
+  }]);

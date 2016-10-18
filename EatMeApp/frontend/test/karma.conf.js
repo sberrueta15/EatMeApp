@@ -49,6 +49,9 @@ module.exports = function(config) {
       'bower_components/js-rich-marker/src/richmarker.js',
       'bower_components/angular-google-maps/dist/angular-google-maps.js',
       'bower_components/ngGeolocation/ngGeolocation.js',
+      'bower_components/angular-aria/angular-aria.js',
+      'bower_components/angular-messages/angular-messages.js',
+      'bower_components/angular-material/angular-material.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

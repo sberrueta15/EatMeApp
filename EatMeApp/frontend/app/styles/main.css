@@ -131,3 +131,11 @@ body {
 
 
 .angular-google-map-container { height: 400px; }
+
+.carddemoBasicUsage .card-media {
+  background-color: #ff9999; }
+
+.max-p{
+  overflow: hidden;
+  max-height: 15ch;
+}
