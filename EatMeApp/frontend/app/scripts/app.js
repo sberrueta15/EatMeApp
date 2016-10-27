@@ -42,6 +42,15 @@ angular
         controllerAs:'evento',
       })
 
+
+      .state('chef.evento-detalle',{
+        url:':eventoId/detalle-evento',
+        templateUrl:'views/evento.detalle.html',
+        controller:'EventoDetalleCtrl',
+        controllerAs:'eventoDetalle',
+      })
+
+
       .state('chef.dashboard',{
         url:'/dashboard',
         templateUrl:'views/dashboard.html',
