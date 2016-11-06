@@ -2,7 +2,7 @@
 
 /**
 * @ngdoc function
-* @name aaApp.controller:EventoCtrl
+* @name EatMeApp.controller:EventoCtrl
 * @description
 * # EventoCtrl
 * Controller of the EatMeApp
@@ -50,7 +50,7 @@ angular.module('EatMeApp')
           $scope.$apply();
         }
       }
-      
+
       // Get current position
       $geolocation.getCurrentPosition({
         timeout: 6000

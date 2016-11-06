@@ -139,3 +139,25 @@ body {
   overflow: hidden;
   max-height: 15ch;
 }
+
+.m-t-05{
+margin-top: 0.5em;
+}
+
+.m-t-1{
+margin-top: 1em;
+}
+
+.m-t-2{
+margin-top: 2em;
+}
+
+.m-t-3{ margin-top: 3em; }
+
+.m-b-1{
+margin-bottom: 1em;
+}
+
+div.allow-dropdown{
+width: 100%;
+}

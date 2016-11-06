@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc overview
- * @name aaApp
+ * @name EatMeApp
  * @description
  * # EatMeApp
  *
@@ -17,12 +17,14 @@ angular
     'ngSanitize',
     'ngTouch',
     'ui.router',
+    'ui.bootstrap',
     'textAngular',
     'uiGmapgoogle-maps',
-    'ngGeolocation'
+    'ngGeolocation',
+
   ])
   .config(['$stateProvider','$urlRouterProvider','uiGmapGoogleMapApiProvider',
-    function ($stateProvider,$urlRouterProvider,GoogleMapApiProviders,routeProvider) {
+    function ($stateProvider,$urlRouterProvider,GoogleMapApiProviders) {
 
 
 
@@ -49,6 +51,12 @@ angular
         controllerAs:'dashboard',
       })
 
+      .state('chef.mi-perfil',{
+        url:'/mi-perfil',
+        templateUrl:'views/mi-perfil.html',
+        controller:'MiperfilCtrl',
+        controllerAs:'perfil',
+      })
 
       $urlRouterProvider.otherwise('/chef/crear-evento');
 
