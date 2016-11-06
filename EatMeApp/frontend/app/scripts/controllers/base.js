@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc function
- * @name aaApp.controller:BaseCtrl
+ * @name EatMeApp.controller:BaseCtrl
  * @description
  * # BaseCtrl
  * Controller of the EatMeApp

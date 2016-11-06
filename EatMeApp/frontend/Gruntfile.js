@@ -80,18 +80,18 @@ module.exports = function (grunt) {
       },proxies: [{
       context: '/api', // the context of the data service
       //host: '192.168.1.44', // wherever the data service is running
-      host: '0.0.0.0', // wherever the data service is running
-      //host: '10.8.13.238', // wherever the data service is running
-      port: 3000 , // the port that the data service is running on
-      rewrite: {'^/api': '/'}
+      //host: '0.0.0.0', // wherever the data service is running
+      host: '192.168.1.44', // wherever the data service is running
+      port: 5000 , // the port that the data service is running on
+      rewrite: {'^/api': '/api'}
       }],
       livereload: {
         options: {
           open: true,
           middleware: function (connect) {
-            var middlewares = []; 
+            var middlewares = [];
             middlewares.push(require('grunt-connect-proxy/lib/utils').proxyRequest); // Setup the proxy
-            
+
             middlewares.push(
               connect.static('.tmp'),
               connect().use(
@@ -279,6 +279,11 @@ module.exports = function (grunt) {
         }
       }
     },
+uglify: {
+      options: {
+        mangle: false
+      },
+    },
 
     // The following *-min tasks will produce minified files in the dist folder
     // By default, your `index.html`'s <!-- Usemin block --> will take care of
@@ -348,7 +353,7 @@ module.exports = function (grunt) {
     ngtemplates: {
       dist: {
         options: {
-          module: 'aaApp',
+          module: 'EatMeApp',
           htmlmin: '<%= htmlmin.dist.options %>',
           usemin: 'scripts/scripts.js'
         },
