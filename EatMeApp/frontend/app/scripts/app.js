@@ -46,7 +46,8 @@ angular
 
 
       .state('chef.evento-detalle',{
-        url:':eventoId/detalle-evento',
+       url:':id/detalle-evento/',
+         params:{id:null,eventoObj:null},
         templateUrl:'views/evento.detalle.html',
         controller:'EventoDetalleCtrl',
         controllerAs:'eventoDetalle',
