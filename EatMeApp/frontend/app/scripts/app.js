@@ -44,12 +44,12 @@ angular
 
 
       .state('chef.evento-detalle',{
-        url:':eventoId/detalle-evento',
+        url:'eventoId/detalle-evento/:id',
+        params:{id:null,eventoObj:null},
         templateUrl:'views/evento.detalle.html',
         controller:'EventoDetalleCtrl',
         controllerAs:'eventoDetalle',
       })
-
 
       .state('chef.dashboard',{
         url:'/dashboard',

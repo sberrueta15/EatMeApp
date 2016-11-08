@@ -15,29 +15,30 @@ angular.module('EatMeApp')
       // Variables
       // --------------------------------------------------------------------------------
       var vm = this;
-      vm.new_evento = {}
+      vm.new_evento = {};
       vm.tipos_comida = [
         {name:"Celiaco",value:"Celiac"},
         {name:"Vegano",value:"Vegan"},
         {name:"Vegeteriano",value:"Vegeterian"},
-        {name:"Sin Restricciones",value:"NoRestriction"},
-      ]
-      vm.new_evento.tipo_comida = vm.tipos_comida[3]
+        {name:"Sin Restricciones",value:"NoRestriction"}
+      ];
+      vm.new_evento.tipo_comida = vm.tipos_comida[3];
       vm.crearEvento = crearEvento;
 
       // wysiwyg
-      vm.ta_toolbar = "[['bold','italics','underline'],['ul','ol']]"
+      vm.ta_toolbar = "[['bold','italics','underline'],['ul','ol']]";
 
       // maps
-      vm.myCurrentPosition = { latitude: -34.8894797, longitude: -56.1614878 }
+      vm.myCurrentPosition = { latitude: -34.8894797, longitude: -56.1614878 };
       vm.map = { center: vm.myCurrentPosition, zoom: 16 };
       vm.map.options = {
-        scrollwheel: false,
+        scrollwheel: false
       };
       vm.map.events = {
         click: function (map, eventName, originalEventArgs) {
           var e = originalEventArgs[0];
           var lat = e.latLng.lat(), lon = e.latLng.lng();
+
           var marker = {
             id: Date.now(),
             coords: {
@@ -46,11 +47,11 @@ angular.module('EatMeApp')
             },
           };
           vm.map.markers = [marker];
-          vm.new_evento.coords =vm.map.markers[0].coords
+          vm.new_evento.coords =vm.map.markers[0].coords;
           $scope.$apply();
         }
-      }
-      
+      };
+
       // Get current position
       $geolocation.getCurrentPosition({
         timeout: 6000
@@ -63,7 +64,7 @@ angular.module('EatMeApp')
             coords: {
               latitude: position.coords.latitude,
               longitude: position.coords.longitude
-            },
+            }
           }
         ];
       });
@@ -85,24 +86,24 @@ angular.module('EatMeApp')
         "LocationY": 0,
         "Id": 2
          */
-        var obj  = {} //el json a mandar
+        var obj  = {}; //el json a mandar
 
-        obj.title = vm.new_evento.nombre
-        obj.description = vm.new_evento.descripcion
-        obj.footType = vm.new_evento.tipo_comida.value
-        obj.ticketPrice = vm.new_evento.precio
-        obj.totalTickets = vm.new_evento.cantidad_cupos
-        obj.locationX = vm.new_evento.coords.latitude
-        obj.locationY = vm.new_evento.coords.longitude
-        console.log(obj)
+        obj.title = vm.new_evento.nombre;
+        obj.description = vm.new_evento.descripcion;
+        obj.footType = vm.new_evento.tipo_comida.value;
+        obj.ticketPrice = vm.new_evento.precio;
+        obj.totalTickets = vm.new_evento.cantidad_cupos;
+        obj.locationX = vm.new_evento.coords.latitude;
+        obj.locationY = vm.new_evento.coords.longitude;
+        console.log(obj);
         eventoService.crearEvento(obj)
           .then(
             function(succsess){
-              console.log("Evento creado!")
+              console.log("Evento creado!");
             },
             function(error){
-              console.log("error!",error)
-            })
+              console.log("error!",error);
+            });
       }
 
     }]);
