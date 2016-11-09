@@ -1,0 +1,38 @@
+{
+  "name": "comensal",
+  "version": "0.0.0",
+  "dependencies": {
+    "angular": "^1.4.0",
+    "bootstrap": "^3.2.0",
+    "angular-animate": "^1.4.0",
+    "angular-cookies": "^1.4.0",
+    "angular-resource": "^1.4.0",
+    "angular-route": "^1.4.0",
+    "angular-sanitize": "^1.4.0",
+    "angular-touch": "^1.4.0",
+    "angular-ui-router": "ui-router#^0.3.1",
+    "jasny-bootstrap": "^3.1.3",
+    "textAngular": "^1.5.12",
+    "font-awesome": "fontawesome#^4.6.3",
+    "angular-google-maps": "^2.4.0",
+    "ngGeolocation": "^0.0.8",
+    "angular-material": "^1.1.1",
+    "jquery": "^3.1.1",
+    "angular-bootstrap": "^2.2.0",
+    "ng-file-upload": "^12.2.13"
+  },
+  "devDependencies": {
+    "angular-mocks": "^1.4.0"
+  },
+  "appPath": "app",
+  "moduleName": "comensalApp",
+  "overrides": {
+    "bootstrap": {
+      "main": [
+        "less/bootstrap.less",
+        "dist/css/bootstrap.css",
+        "dist/js/bootstrap.js"
+      ]
+    }
+  }
+}
