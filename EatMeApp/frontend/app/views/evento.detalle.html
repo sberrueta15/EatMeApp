@@ -6,25 +6,25 @@
 
     <div class="form-group">
       <label for="nombre_comida" name="nombre_comida" class="label-control">Nombre:</label>
-      <input type="input" ng-readonly=true class="form-control" name="nombre_comida" ng-model="evento.Title" required>
+      <input type="input" ng-readonly=true class="form-control" name="nombre_comida" ng-model="evento.title" required>
       <p ng-show="form.nombre_comida.$invalid && !form.nombre_comida.$pristine" class="help-block">Por favor, ingrese un Nombre.</p>
     </div>
 
     <div class="form-group">
       <label ng-readonly=true for="descripcion_comida" name="descripcion_comida" class="label-control">Descripcion:</label>
-      <text-angular ta-disabled=true ta-toolbar={{evento.ta_toolbar}} ng-model="evento.Description" ta-paste="stripFormat($html)"></text-angular>
+      <text-angular ta-disabled=true ta-toolbar={{evento.ta_toolbar}} ng-model="evento.description" ta-paste="stripFormat($html)"></text-angular>
     </div>
 
     <div class="form-group">
       <label ng-readonly=true for="tipo_comida" class="label-control">Tipo de Comida?: </label>
-      <input  ng-readonly=true ng-model="evento.FoodType" id="tipo_comida" ></input>
+      <input  ng-readonly=true ng-model="evento.foodType" id="tipo_comida" ></input>
     </div>
 
     <div class="form-group">
       <label class="label-control" for="precio_comida">Precio: </label>
       <div class="input-group">
         <div class="input-group-addon">$</div>
-        <input  ng-readonly=true type="number" class="form-control" name="precio_comida" id="precio_comida" ng-model="evento.TicketPrice" placeholder=""
+        <input  ng-readonly=true type="number" class="form-control" name="precio_comida" id="precio_comida" ng-model="evento.ticketPrice" placeholder=""
                required>
 
       </div>
@@ -34,14 +34,14 @@
 
     <div class="form-group">
       <label for="cupos_comida">Cantidad de cupos:</label>
-      <input ng-readonly=true type="number" class="form-control" name="cupos_comida" id="cupos_comida" ng-model="evento.TotalTickets" placeholder="" required>
+      <input ng-readonly=true type="number" class="form-control" name="cupos_comida" id="cupos_comida" ng-model="evento.totalTickets" placeholder="" required>
       <p ng-show="form.cupos_comida.$invalid && !form.cupos_comida.$pristine" class="help-block">Por favor, ingrese un cupo valido.</p>
 
     </div>
 
     <div class="form-group">
       <label for="cupos_comida">Cantidad de cupos vendidos:</label>
-      <input ng-readonly=true type="number" class="form-control" name="cupos_comida" id="cupos_comida" ng-model="evento.SoldTickets" placeholder="" required>
+      <input ng-readonly=true type="number" class="form-control" name="cupos_comida" id="cupos_comida" ng-model="evento.soldTickets" placeholder="" required>
       <p ng-show="form.cupos_comida.$invalid && !form.cupos_comida.$pristine" class="help-block">Por favor, ingrese un cupo valido.</p>
 
     </div>

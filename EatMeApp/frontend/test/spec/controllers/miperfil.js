@@ -1,23 +1,23 @@
 'use strict';
 
-describe('Controller: BaseCtrl', function () {
+describe('Controller: MiperfilCtrl', function () {
 
   // load the controller's module
   beforeEach(module('EatMeApp'));
 
-  var BaseCtrl,
+  var MiperfilCtrl,
     scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    BaseCtrl = $controller('BaseCtrl', {
+    MiperfilCtrl = $controller('MiperfilCtrl', {
       $scope: scope
       // place here mocked dependencies
     });
   }));
 
   it('should attach a list of awesomeThings to the scope', function () {
-    expect(BaseCtrl.awesomeThings.length).toBe(3);
+    expect(MiperfilCtrl.awesomeThings.length).toBe(3);
   });
 });

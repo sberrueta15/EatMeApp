@@ -10,7 +10,8 @@
 angular.module('EatMeApp')
   .service('eventoService',['$http','$q',  function ($http,$q) {
 
-    var base = 'api/evento'
+    //var ip = 'http://127.0.0.1:3000/'
+    var base = 'api/event'
     var service = {
       crearEvento: crearEvento,
       getEvento: getEvento,

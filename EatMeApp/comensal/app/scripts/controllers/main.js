@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name EatMeApp.controller:BaseCtrl
+ * @name comensalApp.controller:MainCtrl
  * @description
- * # BaseCtrl
- * Controller of the EatMeApp
+ * # MainCtrl
+ * Controller of the comensalApp
  */
-angular.module('EatMeApp')
-  .controller('BaseCtrl', function () {
+angular.module('comensalApp')
+  .controller('MainCtrl', function () {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',

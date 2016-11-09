@@ -8,14 +8,11 @@
  * Controller of the EatMeApp
  */
 angular.module('EatMeApp')
-
   .controller('EventoDetalleCtrl', ['$scope', 'uiGmapGoogleMapApi', '$geolocation','$stateParams',
     function ($scope, uiGmapGoogleMapApi, $geolocation, $stateParams) {
 
-    console.log("waffles")
     var vm = this;
     vm.evento=$stateParams.eventoObj;
-    console.log(vm.evento);
 
     vm.myCurrentPosition = { latitude: -34.8894797, longitude: -56.1614878 };
       vm.evento.map = {
@@ -35,8 +32,8 @@ angular.module('EatMeApp')
       var marker = {
       id: Date.now(),
       coords: {
-        latitude:  vm.evento.LocationX,
-        longitude: vm.evento.LocationY
+        latitude:  vm.evento.locationX,
+        longitude: vm.evento.locationY
       },
     };
     vm.evento.map.markers = [marker];
@@ -57,6 +54,3 @@ angular.module('EatMeApp')
 
 
   }]);
-
-
-

@@ -2,7 +2,7 @@
 
 /**
 * @ngdoc function
-* @name aaApp.controller:EventoCtrl
+* @name EatMeApp.controller:EventoCtrl
 * @description
 * # EventoCtrl
 * Controller of the EatMeApp

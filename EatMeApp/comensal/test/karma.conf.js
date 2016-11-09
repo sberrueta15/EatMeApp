@@ -1,5 +1,5 @@
 // Karma configuration
-// Generated on 2016-09-27
+// Generated on 2016-11-08
 
 module.exports = function(config) {
   'use strict';
@@ -29,31 +29,6 @@ module.exports = function(config) {
       'bower_components/angular-route/angular-route.js',
       'bower_components/angular-sanitize/angular-sanitize.js',
       'bower_components/angular-touch/angular-touch.js',
-      'bower_components/angular-ui-router/release/angular-ui-router.js',
-      'bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.js',
-      'bower_components/rangy/rangy-core.js',
-      'bower_components/rangy/rangy-classapplier.js',
-      'bower_components/rangy/rangy-highlighter.js',
-      'bower_components/rangy/rangy-selectionsaverestore.js',
-      'bower_components/rangy/rangy-serializer.js',
-      'bower_components/rangy/rangy-textrange.js',
-      'bower_components/textAngular/dist/textAngular.js',
-      'bower_components/textAngular/dist/textAngular-sanitize.js',
-      'bower_components/textAngular/dist/textAngularSetup.js',
-      'bower_components/angular-simple-logger/dist/angular-simple-logger.js',
-      'bower_components/lodash/lodash.js',
-      'bower_components/markerclustererplus/src/markerclusterer.js',
-      'bower_components/google-maps-utility-library-v3-markerwithlabel/dist/markerwithlabel.js',
-      'bower_components/google-maps-utility-library-v3-infobox/dist/infobox.js',
-      'bower_components/google-maps-utility-library-v3-keydragzoom/dist/keydragzoom.js',
-      'bower_components/js-rich-marker/src/richmarker.js',
-      'bower_components/angular-google-maps/dist/angular-google-maps.js',
-      'bower_components/ngGeolocation/ngGeolocation.js',
-      'bower_components/angular-aria/angular-aria.js',
-      'bower_components/angular-messages/angular-messages.js',
-      'bower_components/angular-material/angular-material.js',
-      'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
-      'bower_components/ng-file-upload/ng-file-upload.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

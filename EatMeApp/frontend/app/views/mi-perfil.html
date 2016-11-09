@@ -1,0 +1,150 @@
+<h1 class="page-header">Mi Perfil</h1>
+<div class="container">
+
+<form class="form form-manager-profile m-t-3" name="chefForm" novalidate>
+<fieldset>
+<legend class="alt">Informacion Personal</legend>
+
+<div class="row form-row m-b-1">
+
+<!-- NOMBRE -->
+  <div class="col-xs-12 col-md-6">
+    <div class="form-group">
+      <label for="chef-nombre">Nombre</label>
+      <input type="text" name="chef-nombre" ng-model="perfil.miperfil.nombre" class="form-control">
+    </div>
+  </div>
+
+<!-- APELLIDO -->
+  <div class="col-xs-12 col-md-6">
+    <label for="chef-apellido">Apellido</label>
+    <input type="text" name="chef-apellido" ng-model="perfil.miperfil.apellido" class="form-control">
+  </div>
+</div>
+
+<!-- EMAIL -->
+<div class="row form-row m-b-1">
+  <div class="col-xs-12 col-md-12">
+    <div class="form-group">
+      <label for="chef-email">Email</label>
+      <input type="text" name="chef-email" ng-model="perfil.miperfil.email" class="form-control">
+    </div>
+  </div>
+</div>
+
+<div class="row form-row m-b-1">
+
+<!--CELULAR -->
+  <div class="col-xs-12 col-md-6">
+    <div class="form-group">
+      <label for="chef-telefono">Celular</label>
+      <input type="text" name="chef-telefono" international-phone-number default-country="uy" preferred-countries="uy, ar, br, cl, us" ng-model="perfil.miperfil.telefono" class="form-control col-md-6">
+    </div>
+  </div>
+
+<!-- CEDULA -->
+  <div class="col-xs-12 col-md-6">
+    <label for="chef-cedula">Ci</label>
+    <input type="text" name="chef-cedula" ng-model="perfil.miperfil.cedula" class="form-control">
+  </div>
+</div>
+
+
+</fieldset>
+
+<fieldset class="m-t-2">
+<legend class="alt">Cocinero</legend>
+
+<div class="row form-row m-b-1">
+
+<!-- Direccion -->
+  <div class="col-xs-12 col-md-6">
+    <div class="form-group">
+      <label for="chef-direccion">Direccion</label>
+      <input type="text" name="chef-direccion" ng-model="perfil.miperfil.direccion" class="form-control">
+    </div>
+  </div>
+
+<!-- Numero -->
+  <div class="col-xs-12 col-md-6">
+    <label for="chef-codigo-postal">Codigo Postal</label>
+    <input type="text" name="chef-codigo-postal" ng-model="perfil.miperfil.codigo_postal" class="form-control">
+  </div>
+</div>
+
+<!-- A cerca de mi -->
+<div class="row form-row m-b-1">
+  <div class="col-xs-12 col-md-12">
+    <div class="form-group">
+      <label for="chef-descripcion">A cerca de mi</label>
+      <text-angular ta-toolbar={{perfil.ta_toolbar}} ng-model="perfil.miperfil.descripcion" ta-paste="stripFormat($html)" name="chef-descripcion"></text-angular>
+    </div>
+  </div>
+</div>
+</fieldset>
+
+<div class="container">
+<div class="col-md-6">
+  <button type="button" name="button" class="btn btn-success btn-lg" ng-click="perfil.updateCocineroInfo()">Guardar!</button>
+</div>
+<div ng-show="pefil.guardarMostrar" class="col-md-6">
+  <h4 class="text-right">{{perfil.guardarMsj}}</h4>
+</div>
+
+</div>
+
+<!-- CUENTA -->
+<fieldset class="m-t-2">
+<legend class="alt">Cuenta</legend>
+
+<div class="row form-row m-b-1">
+
+
+<uib-accordion close-others="OneAtTheTime ">
+<!-- Cambiar contraseña -->
+<div uib-accordion-group class="panel-default">
+  <uib-accordion-heading>
+    <i class="fa fa-user" aria-hidden="true"></i> Cambio de Contraseña
+  </uib-accordion-heading>
+  <div class="row form-row m-b-1">
+    <div class="col-xs-12 col-md-6">
+      <div class="form-group">
+        <label for="chef-vieja-contraseña">Contraseña Vieja</label>
+        <input type="password" name="chef-descripcion" class="form-control">
+      </div>
+    </div>
+  </div>
+  <div class="row form-row m-b-1">
+    <div class="col-xs-12 col-md-6">
+      <div class="form-group">
+        <label for="chef-nueva-contraseña">Nueva Contraseña</label>
+        <input type="password" name="chef-nueva-contraseña" class="form-control">
+      </div>
+    </div>
+  </div>
+  <div class="row form-row m-b-1">
+    <div class="col-xs-12 col-md-6">
+      <div class="form-group">
+        <label for="chef-confirmar-nueva-contraseña">Confirmar Nueva Contraseña</label>
+        <input type="password" name="chef-confirmar-nueva-contraseña" class="form-control">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- ELIMINAR CUENTA -->
+  <div uib-accordion-group class="panel-danger">
+		<uib-accordion-heading>
+			<i class="fa fa-trash-o" aria-hidden="true"></i> Eliminar
+		</uib-accordion-heading>
+		<p>Si <b>eliminar</b> su cuenta, clicke aqui.</p>
+		<button class="btn btn-danger">Eliminar</button>
+	</div>
+</uib-accordion>
+
+</div>
+</fieldset>
+</form>
+</div>

@@ -3,7 +3,7 @@
 describe('Controller: EventoCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('aaApp'));
+  beforeEach(module('EatMeApp'));
 
   var EventoCtrl,
     scope;
