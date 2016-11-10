@@ -20,26 +20,34 @@ angular
     'ui.bootstrap',
     'textAngular',
     'uiGmapgoogle-maps',
-    'ngGeolocation'
+    'ngGeolocation',
   ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
-      })
-      .when('/comensal.listado', {
-        templateUrl: 'views/comensal.listado.html',
-        controller: 'ComensalListadoCtrl',
-        controllerAs: 'comensal.listado'
-      })
-      .otherwise({
-        redirectTo: '/'
+  .config(['$stateProvider','$urlRouterProvider','uiGmapGoogleMapApiProvider',
+    function ($stateProvider,$urlRouterProvider,GoogleMapApiProviders){
+
+
+      $stateProvider
+        .state('comensal',{
+          url:'/comensal',
+          templateUrl:'views/base.html',
+          controller:'BaseCtrl',
+          controllerAs:'base',
+          abstract:true,
+        })
+        .state('comensal.listado',{
+          url:'/listado',
+          templateUrl: 'views/comensal.listado.html',
+          controller: 'comensalListadoCtrl',
+          controllerAs: 'comensalListado',
+        })
+
+      $urlRouterProvider.otherwise('/comensal/listado');
+
+      GoogleMapApiProviders.configure({
+        //    key: 'your api key',
+        v: '3.20', //defaults to latest 3.X anyhow
+        libraries: 'weather,geometry,visualization'
       });
-  });
+
+
+    }]);

@@ -1,11 +1,10 @@
 'use strict';
 
-
 angular.module('comensalApp')
-  .service('evento',['$http','$q',  function ($http,$q) {
+  .service('eventoService',['$http','$q',  function ($http,$q) {
 
     //var ip = 'http://127.0.0.1:3000/'
-    var base = 'api/event'
+    var base = 'api/evento'
     var service = {
       crearEvento: crearEvento,
       getEvento: getEvento,
@@ -26,6 +25,7 @@ angular.module('comensalApp')
     }
 
     function getEvento(){
+      console.log("getEvento");
       var deferred = $q.defer();
       $http.get(base)
         .success(function(success){
@@ -36,7 +36,5 @@ angular.module('comensalApp')
         })
       return deferred.promise;
     }
-
-
 
   }]);
