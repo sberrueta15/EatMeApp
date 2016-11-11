@@ -15,15 +15,12 @@ angular.module('comensalApp')
 
 
 
-
         getEventos();
         vm.listado={};
-        vm.myCurrentPosition = { latitude: -34.8894797, longitude: -56.1614878 };
         vm.map = {
           center: {
-            latitude:vm.myCurrentPosition.latitude,
-            longitude:vm.myCurrentPosition.longitude
-          },
+          latitude: -34.8894797, longitude:-34.889479
+        },
           zoom: 10,
           options: {
             streetViewControl: false,
@@ -31,10 +28,6 @@ angular.module('comensalApp')
             scaleControl: false,
             rotateControl: false,
             zoomControl: false,
-            center: {
-              latitude:vm.myCurrentPosition.latitude,
-              longitude:vm.myCurrentPosition.longitude
-            }
           }
         };
         vm.map.markers=[];
@@ -56,16 +49,19 @@ angular.module('comensalApp')
                 latitude:  xEvento.LocationX,
                 longitude: xEvento.LocationY
                 */
-                latitude: -34.8894797,
-                longitude:-34.8894797
+                latitude: "-34.8894797",
+                longitude:"-34.8894797"
               },
             };
-            vm.map.markers.push(marker);
+
+
+              vm.map.markers.push(marker);
 
 
           }
           console.log(vm.eventos );
         })
       }
-        $scope.map=vm.map;
+        console.log(vm.map.center );
+       // $scope.map=vm.map;
     }]);
