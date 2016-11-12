@@ -8,10 +8,12 @@
  * Controller of the EatMeApp
  */
 angular.module('EatMeApp')
-  .controller('DashboardCtrl',['eventoService','$scope', function (eventoService,$scope) {
+  .controller('DashboardCtrl',['CocineroService','$scope', function (CocineroService,$scope) {
     var vm = this;
 
     vm.getEventos = getEventos;
+    vm.currentCooker = CocineroService.getCurrentCooker()
+    console.log(vm.currentCooker)
 
 
 
@@ -19,7 +21,7 @@ angular.module('EatMeApp')
     getEventos();
 
     function getEventos(){
-    eventoService.getEvento().then(function(success){
+    CocineroService.getEventsByCooker(vm.currentCooker).then(function(success){
       vm.eventos = success
     })
     }

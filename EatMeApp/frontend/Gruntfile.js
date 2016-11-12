@@ -81,7 +81,7 @@ module.exports = function (grunt) {
       context: '/api', // the context of the data service
       //host: '192.168.1.44', // wherever the data service is running
       //host: '0.0.0.0', // wherever the data service is running
-      host: '172.20.10.2', // wherever the data service is running
+      host: '192.168.1.45', // wherever the data service is running
       port: 5000 , // the port that the data service is running on
       rewrite: {'^/api': '/api'}
       }],

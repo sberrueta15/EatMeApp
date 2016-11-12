@@ -8,7 +8,7 @@
  * Service in the EatMeApp.
  */
 angular.module('EatMeApp')
-  .service('eventoService',['$http','$q',  function ($http,$q) {
+  .service('eventoService',['CocineroService','$http','$q',  function (CocineroService, $http, $q ) {
 
     //var ip = 'http://127.0.0.1:3000/'
     var base = 'api/event'
@@ -18,9 +18,11 @@ angular.module('EatMeApp')
     }
     return service
 
+    var vm = this;
+
     function crearEvento(evento){
       var deferred = $q.defer();
-      $http.post(base, evento)
+      $http.post(base+'/cooker/'+CocineroService.getCurrentCooker().id, evento)
         .success(function(success){
           deferred.resolve(success);
         })
@@ -31,7 +33,7 @@ angular.module('EatMeApp')
         return deferred.promise;
     }
 
-    function getEvento(){
+    function getEvento(id){
       var deferred = $q.defer();
       $http.get(base)
         .success(function(success){

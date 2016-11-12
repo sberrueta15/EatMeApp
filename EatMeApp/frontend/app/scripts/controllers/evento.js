@@ -30,6 +30,7 @@ angular.module('EatMeApp')
 
       // maps
       vm.myCurrentPosition = { latitude: -34.8894797, longitude: -56.1614878 };
+      console.log(vm.myCurrentPosition)
       vm.map = { center: vm.myCurrentPosition, zoom: 16 };
       vm.map.options = {
         scrollwheel: false
