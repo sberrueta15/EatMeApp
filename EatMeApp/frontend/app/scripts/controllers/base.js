@@ -8,10 +8,13 @@
  * Controller of the EatMeApp
  */
 angular.module('EatMeApp')
-  .controller('BaseCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+  .controller('BaseCtrl',['AutenticationService', function (AutenticationService) {
+    
+  	var vm = this;
+  	vm.signOut = signOut;
+
+  	function signOut(){
+  		AutenticationService.signOut();
+  	}
+
+  }]);
