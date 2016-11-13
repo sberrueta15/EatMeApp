@@ -36,8 +36,8 @@
 
 
 <div class="row">
-  <div class="col-xs-6 col-md-4" ng-repeat="evento in comensalListado.eventos">
-    <div ng-if="evento.showOpt" class="thumbnail">
+  <div class="col-xs-6 col-md-3" ng-repeat="evento in comensalListado.eventos">
+    <div ng-if="evento.showOpt" class="container-fluid thumbnail">
       <img src="http://lorempixel.com/200/200/food/{{$index}}/" alt="...">
       <div class="caption">
         <h3>{{evento.Title}}</h3>
@@ -57,3 +57,6 @@
     </div>
   </div>
 </div>
+
+
+
