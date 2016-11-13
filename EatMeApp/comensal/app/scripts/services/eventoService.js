@@ -18,6 +18,7 @@ angular.module('comensalApp')
           deferred.resolve(success);
         })
         .error(function(error){
+          console.log("error");
           deferred.reject(error);
         })
 
@@ -32,6 +33,7 @@ angular.module('comensalApp')
           deferred.resolve(success);
         })
         .error(function(error){
+          console.log("error");
           deferred.reject(error);
         })
       return deferred.promise;

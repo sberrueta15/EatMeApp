@@ -2,8 +2,58 @@
 
 <h1>asdnaksjndkasjdn</h1>
 
+
+
 <div class="form-group" >
-  <ui-gmap-google-map center="comensalListado.map.center"  zoom="comensalListado.map.zoom" options="comensalListado.map.options" draggable="true">
-   <ui-gmap-marker fit="true" ng-repeat="m in listado.map.markers" coords="m.coords" icon="m.icon" idkey="m.id"></ui-gmap-marker>
+  <ui-gmap-google-map ng-if="comensalListado.map.center" center="comensalListado.map.center"  zoom="10" options="comensalListado.options" draggable="true">
+    <ui-gmap-marker  ng-repeat="evento in comensalListado.eventos"  click="comensalListado.eventoClicked()" coords="evento.marker.coords" icon="evento.marker.icon" idkey="evento.marker.id" >
+
+      <ui-gmap-window ng-if="evento.showOpt" show="m.show" ng-cloak>
+            <div class="thumbnail">
+              <img src="http://lorempixel.com/200/200/food/{{$index}}/" alt="...">
+              <div class="caption">
+                <h3>{{evento.Title}}</h3>
+                <p class="max-p">{{evento.Description}}</p><p>...</p>
+                <div>
+                  <i class="fa fa-ticket" aria-hidden="true"></i>
+                  <span>{{evento.TotalTickets}}</span>
+                  <p>Cupos</p>
+                </div>
+                <div>
+                  <i class="fa fa-users" aria-hidden="true"></i>
+                  <span>{{evento.SoldTickets}}</span>
+                  <p>evento</p>
+                </div>
+                <p><a class="btn btn-primary"  ui-sref="chef.evento-detalle({id: evento.Id,eventoObj:evento})" role="button">Ver Detalle</a></p>
+              </div>
+            </div>
+      </ui-gmap-window>
+    </ui-gmap-marker>
   </ui-gmap-google-map>
+</div>
+
+
+
+
+<div class="row">
+  <div class="col-xs-6 col-md-4" ng-repeat="evento in comensalListado.eventos">
+    <div ng-if="evento.showOpt" class="thumbnail">
+      <img src="http://lorempixel.com/200/200/food/{{$index}}/" alt="...">
+      <div class="caption">
+        <h3>{{evento.Title}}</h3>
+        <p class="max-p">{{evento.Description}}</p><p>...</p>
+        <div>
+          <i class="fa fa-ticket" aria-hidden="true"></i>
+          <span>{{evento.TotalTickets}}</span>
+          <p>Cupos</p>
+        </div>
+        <div>
+          <i class="fa fa-users" aria-hidden="true"></i>
+          <span>{{evento.SoldTickets}}</span>
+          <p>Registrados</p>
+        </div>
+        <p><a class="btn btn-primary"  ui-sref="chef.evento-detalle({id: evento.Id,eventoObj:evento})" role="button">Ver Detalle</a></p>
+      </div>
+    </div>
+  </div>
 </div>
