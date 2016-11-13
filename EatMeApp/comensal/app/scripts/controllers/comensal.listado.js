@@ -17,11 +17,14 @@ angular.module('comensalApp')
 
 
         var vm = this;
-        vm.currentPos;
+        vm.currentPos=null;
         vm.showMap=false;
         vm.currentPosition=false;
+        vm.searchValue="";
 
-
+        $scope.myFilter = function (item) {
+          return item === 'red' || item === 'blue';
+        };
 
 
 
@@ -70,7 +73,7 @@ angular.module('comensalApp')
 
       vm.eventoClicked= function(){
         //placeholder
-     }
+     };
 
 
       function getEventos(){
@@ -95,29 +98,27 @@ angular.module('comensalApp')
       })
       }
        // $scope.map=vm.map;
+        var keys = ["Title", "Description"];
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        vm.customFilter = function (item) {
+          if (vm.searchValue=="") {// your input field is empty
+            return true;
+          }
+          var searchVal =vm.searchValue;
+          searchVal = searchVal.replace(/([()[{*+.$^\\|?])/g, '\\$1'); //special char
+          var regex = new RegExp('' + searchVal, 'i');
+          var key;
+          for(var keyIndex in keys) {
+            key = keys[keyIndex];
+            console.log(key);
+          //  if(vm.searchValue[key]) { Seleccion de busquedas
+              if (regex.test(item[key]) ) {
+                return true;
+              }
+        //    }
+          }
+          return false;
+        }
 
     }]);
+
