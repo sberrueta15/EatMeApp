@@ -6,7 +6,7 @@
 
 <div class="form-group" >
   <ui-gmap-google-map ng-if="comensalListado.map.center" center="comensalListado.map.center"  zoom="10" options="comensalListado.options" draggable="true">
-    <ui-gmap-marker  ng-repeat="evento in comensalListado.eventos |filter:comensalListado.customFilter">"  click="comensalListado.eventoClicked()" coords="evento.marker.coords" icon="evento.marker.icon" idkey="evento.marker.id" >
+    <ui-gmap-marker  ng-repeat="evento in comensalListado.eventos |filter:comensalListado.customFilter" click="comensalListado.eventoClicked()" coords="evento.marker.coords" icon="evento.marker.icon" idkey="evento.marker.id" >
 
       <ui-gmap-window ng-if="evento.showOpt" show="m.show" ng-cloak>
             <div class="thumbnail">

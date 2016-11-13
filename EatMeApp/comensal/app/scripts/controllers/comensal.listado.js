@@ -101,13 +101,18 @@ angular.module('comensalApp')
         var keys = ["Title", "Description"];
 
         vm.customFilter = function (item) {
-          if (vm.searchValue=="") {// your input field is empty
+          if (!item.showOpt|| vm.searchValue=="") {// your input field is empty
             return true;
           }
+
+
           var searchVal =vm.searchValue;
           searchVal = searchVal.replace(/([()[{*+.$^\\|?])/g, '\\$1'); //special char
           var regex = new RegExp('' + searchVal, 'i');
           var key;
+
+
+
           for(var keyIndex in keys) {
             key = keys[keyIndex];
             console.log(key);
