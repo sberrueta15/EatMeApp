@@ -1,6 +1,6 @@
 
 
-<h1>Lis</h1>
+<h1>Listado de Eventos</h1>
 
 
 
@@ -24,7 +24,7 @@
                   <span>{{evento.soldTickets}}</span>
                   <p>evento</p>
                 </div>
-                <p><a class="btn btn-primary"  ui-sref="comensal.evento-detalle({id: evento.id,eventoObj:evento,estoyInscripto:false})" role="button">Ver Detalle</a></p>
+                <p><a class="btn btn-primary"  ui-sref="comensal.evento-detalle({id: evento.id,eventoObj:evento,estoyInscripto:true})" role="button">Ver Detalle</a></p>
               </div>
             </div>
       </ui-gmap-window>
@@ -57,7 +57,7 @@
           <span>{{evento.soldTickets}}</span>
           <p>Registrados</p>
         </div>
-        <p><a class="btn btn-primary"  ui-sref="comensal.evento-detalle({id: evento.id,eventoObj:evento,estoyInscripto:false})" role="button">Ver Detalle</a></p>
+        <p><a class="btn btn-primary"  ui-sref="comensal.evento-detalle({id: evento.id,eventoObj:evento,estoyInscripto:true})" role="button">Ver Detalle</a></p>
       </div>
     </div>
   </div>

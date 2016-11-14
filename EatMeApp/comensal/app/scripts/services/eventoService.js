@@ -6,12 +6,13 @@ angular.module('comensalApp')
     //var ip = 'http://127.0.0.1:3000/'
     var base = 'api/evento'
     var service = {
-      crearEvento: crearEvento,
+      getMisEventos: getMisEventos,
       getEvento: getEvento,
+      Inscribirse:Inscribirse,
     }
     return service
 
-    function crearEvento(evento){
+    function Inscribirse(evento){
       var deferred = $q.defer();
       $http.post(base, evento)
         .success(function(success){
@@ -26,6 +27,20 @@ angular.module('comensalApp')
     }
 
     function getEvento(){
+      console.log("getEvento");
+      var deferred = $q.defer();
+      $http.get(base)
+        .success(function(success){
+          deferred.resolve(success);
+        })
+        .error(function(error){
+          console.log("error");
+          deferred.reject(error);
+        })
+      return deferred.promise;
+    }
+
+    function getMisEventos(){
       console.log("getEvento");
       var deferred = $q.defer();
       $http.get(base)

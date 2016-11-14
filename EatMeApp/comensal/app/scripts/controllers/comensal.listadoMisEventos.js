@@ -8,13 +8,8 @@
  * Controller of the comensalApp
  */
 angular.module('comensalApp')
-    .controller('comensalListadoCtrl',  ['$scope', 'uiGmapGoogleMapApi', '$geolocation','$stateParams','eventoService',
+    .controller('comensalListadoMisEventosCtrl',  ['$scope', 'uiGmapGoogleMapApi', '$geolocation','$stateParams','eventoService',
       function ($scope, uiGmapGoogleMapApi, $geolocation, $stateParams,eventoService) {
-
-
-
-
-
 
         var vm = this;
         vm.currentPos=null;
@@ -76,7 +71,7 @@ angular.module('comensalApp')
      };
 
       function getEventos(){
-        eventoService.getEvento().then(function(success){
+        eventoService.getMisEventos().then(function(success){
         var eventosList=[];
         for (var x in success){
           var xEvento=success[x];

@@ -40,6 +40,21 @@ angular
           controller: 'comensalListadoCtrl',
           controllerAs: 'comensalListado',
         })
+        .state('comensal.listadoMisEventos',{
+          url:'/listado',
+          templateUrl: 'views/comensal.listadoMisEventos.html',
+          controller: 'comensalListadoMisEventosCtrl',
+          controllerAs: 'comensalListado',
+        })
+        .state('comensal.evento-detalle',{
+          url:':id/detalle-evento/',
+          params:{id:null,eventoObj:null,estoyInscripto:null},
+          templateUrl:'views/evento.detalle.html',
+          controller:'EventoDetalleMisEventosCtrl',
+          controllerAs:'eventoDetalle',
+          authenticate:true
+
+        })
 
       $urlRouterProvider.otherwise('/comensal/listado');
 
