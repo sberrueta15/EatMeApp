@@ -25,6 +25,9 @@ module.exports = function (grunt) {
     dist: 'dist'
   };
 
+  grunt.loadNpmTasks('grunt-connect-proxy');
+
+
   // Define the configuration for all the tasks
   grunt.initConfig({
 
@@ -74,23 +77,30 @@ module.exports = function (grunt) {
         // Change this to '0.0.0.0' to access the server from outside.
         hostname: 'localhost',
         livereload: 35729
-      },
+      },proxies: [{
+        context: '/api', // the context of the data service
+        //host: '192.168.1.44', // wherever the data service is running
+        host: 'localhost', // wherever the data service is running
+        //host: '10.8.13.238', // wherever the data service is running
+        port: 3000 , // the port that the data service is running on
+
+      }],
       livereload: {
         options: {
           open: true,
           middleware: function (connect) {
-            return [
+            var middlewares = [];
+            middlewares.push(require('grunt-connect-proxy/lib/utils').proxyRequest); // Setup the proxy
+
+            middlewares.push(
               connect.static('.tmp'),
               connect().use(
                 '/bower_components',
                 connect.static('./bower_components')
               ),
-              connect().use(
-                '/app/styles',
-                connect.static('./app/styles')
-              ),
               connect.static(appConfig.app)
-            ];
+            );
+            return middlewares;
           }
         }
       },
@@ -211,16 +221,16 @@ module.exports = function (grunt) {
         fileTypes:{
           js: {
             block: /(([\s\t]*)\/{2}\s*?bower:\s*?(\S*))(\n|\r|.)*?(\/{2}\s*endbower)/gi,
-              detect: {
-                js: /'(.*\.js)'/gi
-              },
-              replace: {
-                js: '\'{{filePath}}\','
-              }
+            detect: {
+              js: /'(.*\.js)'/gi
+            },
+            replace: {
+              js: '\'{{filePath}}\','
             }
           }
+        }
       }
-    }, 
+    },
 
     // Renames files for browser caching purposes
     filerev: {
@@ -338,7 +348,7 @@ module.exports = function (grunt) {
     ngtemplates: {
       dist: {
         options: {
-          module: 'comensalApp',
+          module: 'aaApp',
           htmlmin: '<%= htmlmin.dist.options %>',
           usemin: 'scripts/scripts.js'
         },
@@ -437,6 +447,8 @@ module.exports = function (grunt) {
       'wiredep',
       'concurrent:server',
       'postcss:server',
+      'configureProxies:server',
+
       'connect:livereload',
       'watch'
     ]);
@@ -481,3 +493,4 @@ module.exports = function (grunt) {
     'build'
   ]);
 };
+
