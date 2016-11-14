@@ -8,7 +8,7 @@
  * Controller of the comensalApp
  */
 angular.module('comensalApp')
-  .controller('MainCtrl', function () {
+  .controller('BaseCtrl', function () {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
