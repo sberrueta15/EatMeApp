@@ -80,10 +80,10 @@ angular.module('comensalApp')
         var eventosList=[];
         for (var x in success){
           var xEvento=success[x];
-          var xCoords= {latitude:  xEvento.LocationX,
-                       longitude: xEvento.LocationY};
+          var xCoords= {latitude:  xEvento.locationX,
+                       longitude: xEvento.locationY};
           if (xCoords.latitude!=0 || xCoords.longitude!=0){
-            var marker = {id: xEvento.Id,coords:xCoords,};
+            var marker = {id: xEvento.id,coords:xCoords,};
             xEvento.marker=marker;
             xEvento.showOpt=true;
             eventosList.push(xEvento);
@@ -97,7 +97,7 @@ angular.module('comensalApp')
       })
       }
        // $scope.map=vm.map;
-        var keys = ["Title", "Description"];
+        var keys = ["title", "description"];
 
         vm.customFilter = function (item) {
           if (!item.showOpt|| vm.searchValue=="") {// your input field is empty

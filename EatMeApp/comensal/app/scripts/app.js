@@ -50,7 +50,7 @@ angular
           url:':id/detalle-evento/',
           params:{id:null,eventoObj:null,estoyInscripto:null},
           templateUrl:'views/evento.detalle.html',
-          controller:'EventoDetalleCtrl',
+          controller:'EventoDetalleMisEventosCtrl',
           controllerAs:'eventoDetalle',
           authenticate:true
 

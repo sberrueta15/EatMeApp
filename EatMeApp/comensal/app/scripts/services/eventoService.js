@@ -6,8 +6,9 @@ angular.module('comensalApp')
     //var ip = 'http://127.0.0.1:3000/'
     var base = 'api/evento'
     var service = {
-      crearEvento: crearEvento,
+      getMisEventos: getMisEventos,
       getEvento: getEvento,
+      Inscribirse:Inscribirse,
     }
     return service
 
