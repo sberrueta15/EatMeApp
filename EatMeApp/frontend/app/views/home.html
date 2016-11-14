@@ -261,13 +261,20 @@
     <div class="loginmodal-container">
         <h1>Create your Account</h1><br>
         <form name="form_signup">
+
+            <!-- nombre -->
             <input type="text" name="name" ng-model="auth.user.name" placeholder="Nombre" required>
             <div ng-show="form_signup.$submitted || form_signup.name.$touched">
               <span ng-show="form_signup.name.$error.required">Escribe tu Nombre</span>
               <span ng-show="form_signup.name.$error.email">No es un Nombre valido</span>
           </div>
-
+            
+        <!-- Apellido -->
           <input type="text" name="last" ng-model="auth.user.last" placeholder="Apellido">
+          <div ng-show="form_signup.$submitted || form_signup.name.$touched">
+              <span ng-show="form_signup.name.$error.required">Escribe tu Nombre</span>
+              <span ng-show="form_signup.name.$error.email">No es un Nombre valido</span>
+          </div>
           <input type="text" name="address" ng-model="auth.user.address" placeholder="Direccion">
           <input type="email" name="email" ng-model="auth.user.email" placeholder="Email">
           <input type="password" name="pass"  ng-model="auth.user.pass1"placeholder="Password">

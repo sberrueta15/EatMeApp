@@ -4,7 +4,7 @@ body {
   width: 100%;
 }
 body {
-  font-family: 'Merriweather', 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Cabin', 'Helvetica Neue', Arial, sans-serif;
 }
 hr {
   border-color: #F05F40;
@@ -30,7 +30,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Cabin', 'Helvetica Neue', Arial, sans-serif;
 }
 p {
   font-size: 16px;
@@ -59,14 +59,14 @@ aside {
 .navbar-default {
   background-color: white;
   border-color: rgba(34, 34, 34, 0.05);
-  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Cabin', 'Helvetica Neue', Arial, sans-serif;
   -webkit-transition: all 0.35s;
   -moz-transition: all 0.35s;
   transition: all 0.35s;
 }
 .navbar-default .navbar-header .navbar-brand {
   color: #F05F40;
-  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Cabin', 'Helvetica Neue', Arial, sans-serif;
   font-weight: 700;
   text-transform: uppercase;
 }
@@ -247,7 +247,7 @@ header .header-content .header-content-inner p {
 }
 .portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-category,
 .portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-name {
-  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Cabin', 'Helvetica Neue', Arial, sans-serif;
   padding: 0 15px;
 }
 .portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-category {
@@ -379,7 +379,7 @@ fieldset[disabled] .btn-primary.active {
   background-color: white;
 }
 .btn {
-  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Cabin', 'Helvetica Neue', Arial, sans-serif;
   border: none;
   border-radius: 300px;
   font-weight: 700;
@@ -424,6 +424,8 @@ body {
 .loginmodal-container h1 {
   text-align: center;
   font-size: 1.8em;
+    font-family: 'Cabin', 'Helvetica Neue', Arial, sans-serif;
+
 }
 
 .loginmodal-container input[type=submit] {
@@ -431,12 +433,16 @@ body {
   display: block;
   margin-bottom: 10px;
   position: relative;
+    font-family: 'Cabin', 'Helvetica Neue', Arial, sans-serif;
+
 }
 
 .loginmodal-container input[type=text], input[type=password],input[type=email] {
   height: 44px;
   font-size: 16px;
   width: 100%;
+    font-family: 'Cabin', 'Helvetica Neue', Arial, sans-serif;
+
   margin-bottom: 10px;
   -webkit-appearance: none;
   background: #fff;
@@ -454,6 +460,8 @@ body {
   -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
   -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
   box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+    font-family: 'Cabin', 'Helvetica Neue', Arial, sans-serif;
+
 }
 
 .loginmodal {

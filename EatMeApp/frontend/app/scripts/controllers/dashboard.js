@@ -13,9 +13,6 @@ angular.module('EatMeApp')
 
     vm.getEventos = getEventos;
     vm.currentCooker = CocineroService.getCurrentCooker()
-    console.log(vm.currentCooker)
-
-
 
     // Activate
     getEventos();
