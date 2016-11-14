@@ -72,9 +72,8 @@ angular.module('comensalApp')
 
 
       vm.eventoClicked= function(){
-        //placeholder
+        //placeholdererasd
      };
-
 
       function getEventos(){
         eventoService.getEvento().then(function(success){
