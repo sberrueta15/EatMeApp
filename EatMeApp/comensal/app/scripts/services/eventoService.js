@@ -11,7 +11,7 @@ angular.module('comensalApp')
     }
     return service
 
-    function crearEvento(evento){
+    function Inscribirse(evento){
       var deferred = $q.defer();
       $http.post(base, evento)
         .success(function(success){
@@ -26,6 +26,20 @@ angular.module('comensalApp')
     }
 
     function getEvento(){
+      console.log("getEvento");
+      var deferred = $q.defer();
+      $http.get(base)
+        .success(function(success){
+          deferred.resolve(success);
+        })
+        .error(function(error){
+          console.log("error");
+          deferred.reject(error);
+        })
+      return deferred.promise;
+    }
+
+    function getMisEventos(){
       console.log("getEvento");
       var deferred = $q.defer();
       $http.get(base)
