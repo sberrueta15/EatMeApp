@@ -12,6 +12,7 @@
         // AngularJS will instantiate a singleton by calling "new" on this function
         var vm = this;
     //var ip = 'http://127.0.0.1:3000/'
+    var ip = 'http://localhost:5001/'
     var base = 'api/cooker/'
     var service = {
       getCocinero: getCocinero,
@@ -23,7 +24,7 @@
 
     function getCocinero(idCocinero){
       var deferred = $q.defer();
-      $http.get(base+idCocinero)
+      $http.get(ip+base+idCocinero)
       .success(function(success){
         deferred.resolve(success)
       })
@@ -45,7 +46,7 @@
 
     function updateCocineroInfo(cocinero){
       var deferred = $q.defer()
-      $http.put(base+cocinero.id,cocinero)
+      $http.put(ip+base+cocinero.id,cocinero)
       .success(function(success){
         deferred.resolve(success)
       })
@@ -57,7 +58,7 @@
 
     function getEventsByCooker(cooker){
       var deferred = $q.defer()
-      $http.get(base+cooker.id+'/events')
+      $http.get(ip+base+cooker.id+'/events')
       .success(function(success){
         deferred.resolve(success)
       })

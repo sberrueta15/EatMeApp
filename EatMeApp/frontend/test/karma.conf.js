@@ -57,6 +57,7 @@ module.exports = function(config) {
       'bower_components/a0-angular-storage/dist/angular-storage.js',
       'bower_components/angular-jwt/dist/angular-jwt.js',
       'bower_components/angular-ui-router-anim-in-out/anim-in-out.js',
+      'bower_components/angular-ui-router-styles/ui-router-styles.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

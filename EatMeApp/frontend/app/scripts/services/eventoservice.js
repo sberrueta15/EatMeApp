@@ -19,10 +19,11 @@ angular.module('EatMeApp')
     return service
 
     var vm = this;
+    var ip = 'http://localhost:5001/'
 
     function crearEvento(evento){
       var deferred = $q.defer();
-      $http.post(base+'/cooker/'+CocineroService.getCurrentCooker().id, evento)
+      $http.post(ip+base+'/cooker/'+CocineroService.getCurrentCooker().id, evento)
         .success(function(success){
           deferred.resolve(success);
         })
@@ -35,7 +36,7 @@ angular.module('EatMeApp')
 
     function getEvento(id){
       var deferred = $q.defer();
-      $http.get(base)
+      $http.get(ip+base)
         .success(function(success){
           deferred.resolve(success);
         })
