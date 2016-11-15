@@ -1,9 +1,5 @@
-
-
-<h1>Listado de Eventos</h1>
-
-
-
+<div class="container">
+  
 <div class="form-group" >
   <ui-gmap-google-map ng-if="comensalListado.map.center" center="comensalListado.map.center"  zoom="10" options="comensalListado.options" draggable="true">
     <ui-gmap-marker  ng-repeat="evento in comensalListado.eventos |filter:comensalListado.customFilter" click="comensalListado.eventoClicked()" coords="evento.marker.coords" icon="evento.marker.icon" idkey="evento.marker.id" >
@@ -32,11 +28,20 @@
   </ui-gmap-google-map>
 </div>
 
-
-<div class="wrapper">
-  <input  ng-model="comensalListado.searchValue" type="text"  /><br />
-  <strong>Search in:</strong><br />
-</div>
+<div class="row m-b-1">
+         <div class="col-md-12">
+            <div id="custom-search-input">
+                <div class="input-group col-md-12">
+                    <input type="text" class="form-control input-lg" placeholder="Buscar" ng-model="comensalListado.searchValue" />
+                    <span class="input-group-btn">
+                        <button class="btn btn-info btn-lg" type="button">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+  </div>
 
 
 
@@ -61,6 +66,7 @@
       </div>
     </div>
   </div>
+</div>
 </div>
 
 

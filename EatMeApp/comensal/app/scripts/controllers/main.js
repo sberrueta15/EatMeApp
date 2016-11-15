@@ -8,10 +8,13 @@
  * Controller of the comensalApp
  */
 angular.module('comensalApp')
-  .controller('BaseCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+  .controller('MainCtrl', ['AutenticationService', function (AutenticationService) {
+    
+  	var vm = this;
+  	vm.signOut = signOut;
+
+  	function signOut(){
+  		AutenticationService.signOut();
+  	}
+
+  }]);

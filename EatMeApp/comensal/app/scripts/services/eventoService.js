@@ -1,11 +1,19 @@
 'use strict';
-
+/**
+ * @ngdoc service
+ * @name comensalApp.eventoService
+ * @description
+ * # eventoService
+ * Service in the comensalApp.
+ */
 angular.module('comensalApp')
   .service('eventoService',['$http','$q',  function ($http,$q) {
 
-    //var ip = 'http://127.0.0.1:3000/'
+    var vm = this;
+    vm.ip = 'http://localhost:5001/'
+    //vm.ip = 'http://54.70.143.222:5001/'
 
-    var base = 'api/event';
+    vm.base = 'api/event';
     var service = {
       getMisEventos: getMisEventos,
       getEvento: getEvento,
@@ -13,11 +21,10 @@ angular.module('comensalApp')
     }
     return service
 
-    function Inscribirse(idEvento,idComensal){
+    function Inscribirse(idEvento,idComensal,evento){
       var deferred = $q.defer();
-      base="/api/event/asignarcomensal/"+idComensal+"/"+idEvento;
 
-      $http.post(base, evento)
+      $http.put(vm.ip+vm.base+"/asignarcomensal/"+idComensal+"/"+idEvento)
         .success(function(success){
           deferred.resolve(success);
         })
@@ -30,27 +37,21 @@ angular.module('comensalApp')
     }
 
     function getEvento(){
-      base = 'api/event';
-      console.log("getEvento");
       var deferred = $q.defer();
-      console.log("waffles")
-      console.log(base)
-      $http.get(base)
+      $http.get(vm.ip+vm.base)
         .success(function(success){
           deferred.resolve(success);
         })
         .error(function(error){
-          console.log("error");
           deferred.reject(error);
         })
       return deferred.promise;
     }
 
     function getMisEventos(idComensal){
-      base="/api/commensal/"+idComensal+"/events";
-      console.log("getEvento");
+      var base="api/commensal/"+idComensal+"/events";
       var deferred = $q.defer();
-      $http.get(base)
+      $http.get(vm.ip + base)
         .success(function(success){
           deferred.resolve(success);
         })
