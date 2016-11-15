@@ -11,7 +11,7 @@ angular.module('EatMeApp')
 .controller('MiperfilCtrl',['CocineroService','$timeout', function (CocineroService,$timeout) {
 
   var vm = this;
-  vm.idCocinero = 1;
+  vm.idCocinero = CocineroService.getCurrentCooker().id;
   vm.updateCocineroInfo = updateCocineroInfo;
   vm.guardarMsj = "Guardando";
   vm.guardarMostrar = false;

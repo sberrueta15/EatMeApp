@@ -22,15 +22,23 @@
   'uiGmapgoogle-maps',
   'ngGeolocation',
   'angular-storage',
-  'angular-jwt'
+  'angular-jwt',
+  'uiRouterStyles'
 
   ])
- .config(['$stateProvider','$urlRouterProvider','uiGmapGoogleMapApiProvider','jwtInterceptorProvider','$httpProvider',
-  function ($stateProvider,$urlRouterProvider,GoogleMapApiProviders,jwtInterceptorProvider,$httpProvider) {
+ .config(['$stateProvider','$urlRouterProvider','uiGmapGoogleMapApiProvider','jwtInterceptorProvider','$httpProvider','jwtOptionsProvider',
+  function ($stateProvider,$urlRouterProvider,GoogleMapApiProviders,jwtInterceptorProvider,$httpProvider,jwtOptionsProvider) {
 
 //-------------------------------
 // JWT
 //-------------------------------
+//
+//
+
+jwtOptionsProvider.config({
+   whiteListedDomains: ['54.70.143.222', 'localhost']
+});
+
 jwtInterceptorProvider.tokenGetter = function(store) {
   return store.get('access_token');
 };
@@ -41,11 +49,12 @@ $httpProvider.interceptors.push('jwtInterceptor');
 $stateProvider
 .state('home',{
   url:'/home',
+
   views:{
     'home':{
       templateUrl:'views/home.html',
       controller:'AuthCtrl',
-      controllerAs:'auth',
+      controllerAs:'auth'
     },
   },
   authenticate:false
@@ -97,7 +106,7 @@ $stateProvider
 
 })
 
-$urlRouterProvider.otherwise('/chef/crear-evento');
+$urlRouterProvider.otherwise('/home');
 
 GoogleMapApiProviders.configure({
           //    key: 'your api key',

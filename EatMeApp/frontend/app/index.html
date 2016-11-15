@@ -18,9 +18,12 @@
       <!-- build:css(.tmp) styles/main.css -->
       
       <link href="styles/magnific-popup.css" rel="stylesheet">
-<link rel="stylesheet" href="styles/main.css">
+      <link rel="stylesheet" href="styles/main.css">
       <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
       <link href="https://fonts.googleapis.com/css?family=Cabin:400,500,600" rel="stylesheet">
+      <link rel="stylesheet" href="styles/creative.css" />
+      <link rel="stylesheet" href="styles/magnific-popup.css" />
+
 
       <!-- endbuild -->
     </head>
@@ -90,6 +93,7 @@
       <script src="bower_components/a0-angular-storage/dist/angular-storage.js"></script>
       <script src="bower_components/angular-jwt/dist/angular-jwt.js"></script>
       <script src="bower_components/angular-ui-router-anim-in-out/anim-in-out.js"></script>
+      <script src="bower_components/angular-ui-router-styles/ui-router-styles.js"></script>
       <!-- endbower -->
       <!-- endbuild -->
 
@@ -106,7 +110,15 @@
           <script src="scripts/controllers/evento.detalle.js"></script>
           <script src="scripts/controllers/auth.js"></script>
           <script src="scripts/services/autenticationservice.js"></script>
+          
           <!-- endbuild -->
+
+           <!-- build:js({.tmp,app}) scripts/extras.js -->
+          <script src="styles/scripts/jquery.magnific-popup.min.js"></script>
+        <script src="styles/scripts/scrollreveal.js"></script>
+          <script src="styles/scripts/creative.js"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+        <!-- endbuild -->
 
   </body>
   </html>
