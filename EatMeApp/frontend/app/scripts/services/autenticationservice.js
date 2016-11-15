@@ -17,15 +17,16 @@ angular.module('EatMeApp')
    }
 
    var vm = this;
-   var ip = ''
-   //var ip = 'http://localhost:5001'
+   //var ip = ''
+   vm.ip = 'http://localhost:5001'
+   //vm.ip = 'http://54.70.143.222:5001'
    vm.base = "/api"
    vm.app = {app:'cooker'}
 
    function login(user){
     var data = angular.extend({},user,vm.app);
     var deferred = $q.defer();
-      $http.post(ip+vm.base+'/login',data)
+      $http.post(vm.ip+vm.base+'/login',data)
         .success(function(success){
           deferred.resolve(success)
   })
@@ -40,7 +41,7 @@ angular.module('EatMeApp')
     function signUp(user){
     var data = angular.extend({},user,vm.app);
     var deferred = $q.defer();
-      $http.post(ip+vm.base+'/cooker',data)
+      $http.post(vm.ip+vm.base+'/cooker',data)
         .success(function(success){
           deferred.resolve(success)
   })
