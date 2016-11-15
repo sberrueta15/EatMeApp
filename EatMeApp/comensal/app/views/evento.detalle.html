@@ -52,9 +52,9 @@
         <ui-gmap-marker ng-repeat="m in evento.map.markers" coords="m.coords" icon="m.icon" idkey="m.id"></ui-gmap-marker>
       </ui-gmap-google-map>
     </div>
-    <div  ng-if="evento.estoyInscripto" class="form-group">
+    <div   class="form-group">
       <div class="center-block">
-        <button type="submit" ng-click="evento.Inscribirse()"class="btn btn-lg btn-primary center-block " ng-disabled="form.$invalid">
+        <button  ng-if="!evento.estoyInscripto || evento.soldTickets==evento.totalTickets" ng-click="evento.Inscribirse()"class="btn btn-lg btn-primary center-block " ng-disabled="form.$invalid">
           Inscribirse
         </button>
       </div>

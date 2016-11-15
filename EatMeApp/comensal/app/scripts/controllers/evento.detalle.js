@@ -8,12 +8,20 @@
  * Controller of the EatMeApp
  */
 angular.module('comensalApp')
-  .controller('EventoDetalleMisEventosCtrl', ['$scope', 'uiGmapGoogleMapApi', '$geolocation','$stateParams',
-    function ($scope, uiGmapGoogleMapApi, $geolocation, $stateParams) {
+  .controller('EventoDetalleMisEventosCtrl', ['$scope', 'uiGmapGoogleMapApi', '$geolocation','$stateParams','eventoService',
+    function ($scope, uiGmapGoogleMapApi, $geolocation, $stateParams,eventoService) {
 
     var vm = this;
+
+
+    //ACA VA EL ID POSTA HUE SUAREZ
+    vm.miId=2;
+
     vm.evento=$stateParams.eventoObj;
     vm.estoyInscripto=$stateParams.estoyInscripto;
+
+      vm.Inscribirse = Inscribirse;
+
       vm.tipos_comida = [
         {name:"Celiaco",value:"Celiac"},
         {name:"Vegano",value:"Vegan"},
@@ -54,22 +62,8 @@ angular.module('comensalApp')
 
 
       function Inscribirse(){
-        /*
-         * "Title":"Segundo Evento!",
-         * "Description": "Vamo lo pibee!",
-         "FoodType": "Celiac","Vegan","Vegeterian","NoRestriction"
-         "TotalTickets": 10,
-         "TicketPrice": 75,
-         "SoldTickets": 0,
-         "LocationX": 0,
-         "LocationY": 0,
-         "Id": 2
-         */
-        var obj  = {}; //el json a mandar
-
-      //  vm.evento.id
-        console.log(obj);
-        eventoService.Inscribirse(obj)
+        console.log("asd");
+        eventoService.Inscribirse(vm.miId, vm.evento.id)
           .then(
             function(succsess){
               console.log("Evento creado!");

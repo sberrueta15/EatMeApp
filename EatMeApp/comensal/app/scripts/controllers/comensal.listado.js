@@ -21,15 +21,13 @@ angular.module('comensalApp')
         vm.showMap=false;
         vm.currentPosition=false;
         vm.searchValue="";
+        vm.eventos = [];
 
-        $scope.myFilter = function (item) {
-          return item === 'red' || item === 'blue';
-        };
-
-
-
-
+        //ACA VA EL ID POSTA HUE SUAREZ
+        vm.miId=2;
+        vm.eventosAgregados={};
         vm.getEventos = getEventos;
+        getEventos();
 
 
         navigator.geolocation.getCurrentPosition(function (position) {
@@ -50,7 +48,6 @@ angular.module('comensalApp')
         });
 
 
-        getEventos();
 
         vm.listado={};
         vm.map = {
@@ -68,33 +65,83 @@ angular.module('comensalApp')
           markers:[]
         };
 
-
-
-
       vm.eventoClicked= function(){
         //placeholdererasd
      };
 
+
+     function misEventos(){
+
+       eventoService.getMisEventos(vm.miId).then(function(success){
+         var eventosList=[];
+         for (var x in success){
+           var xEvento=success[x];
+           var xCoords= {latitude:  xEvento.locationX,
+             longitude: xEvento.locationY};
+           if (xCoords.latitude!=0 || xCoords.longitude!=0){
+             var marker = {id: xEvento.id,coords:xCoords,};
+             xEvento.marker=marker;
+             xEvento.showOpt=true;
+             xEvento.estoInscripto=true;
+             vm.eventos.push(xEvento);
+             vm.eventosAgregados[xEvento.id]=true;
+           }
+         }
+
+         console.log(vm.eventos)
+         return vm.eventos;
+       });
+
+
+     }
+
+
+
       function getEventos(){
-        eventoService.getEvento().then(function(success){
-        var eventosList=[];
-        for (var x in success){
-          var xEvento=success[x];
-          var xCoords= {latitude:  xEvento.locationX,
-                       longitude: xEvento.locationY};
-          if (xCoords.latitude!=0 || xCoords.longitude!=0){
-            var marker = {id: xEvento.id,coords:xCoords,};
-            xEvento.marker=marker;
-            xEvento.showOpt=true;
-            eventosList.push(xEvento);
+
+        eventoService.getMisEventos(vm.miId).then(function(success){
+          var eventosList=[];
+          for (var x in success){
+            var xEvento=success[x];
+            var xCoords= {latitude:  xEvento.locationX,
+              longitude: xEvento.locationY};
+            if (xCoords.latitude!=0 || xCoords.longitude!=0){
+              var marker = {id: xEvento.id,coords:xCoords,};
+              xEvento.marker=marker;
+              xEvento.showOpt=true;
+              xEvento.estoyInscripto=true;
+              vm.eventos.push(xEvento);
+              vm.eventosAgregados[xEvento.id]=true;
+            }
           }
-        }
-        vm.eventos = eventosList;
+          eventoService.getEvento().then(function(success){
+          var eventosList=[];
+          for (var x in success){
+            var xEvento=success[x];
+            if (!vm.eventosAgregados[xEvento.id]){
+              var xCoords= {latitude:  xEvento.locationX,
+                           longitude: xEvento.locationY};
+              if (xCoords.latitude!=0 || xCoords.longitude!=0){
+                var marker = {id: xEvento.id,coords:xCoords,};
+                xEvento.marker=marker;
+                xEvento.showOpt=true;
+                xEvento.estoyInscripto=false;
+                vm.eventosAgregados[xEvento.id]=true;
+                vm.eventos.push(xEvento);
+
+              }
+            }
+          }
+
+          console.log(vm.eventos)
+          return vm.eventos;
+          });
+        })
+        //    vm.eventos = eventosList;
 
 
-        return vm.eventos;
 
-      })
+
       }
        // $scope.map=vm.map;
         var keys = ["title", "description"];
@@ -103,15 +150,10 @@ angular.module('comensalApp')
           if (!item.showOpt|| vm.searchValue=="") {// your input field is empty
             return true;
           }
-
-
           var searchVal =vm.searchValue;
           searchVal = searchVal.replace(/([()[{*+.$^\\|?])/g, '\\$1'); //special char
           var regex = new RegExp('' + searchVal, 'i');
           var key;
-
-
-
           for(var keyIndex in keys) {
             key = keys[keyIndex];
             console.log(key);

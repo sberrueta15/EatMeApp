@@ -79,10 +79,15 @@ module.exports = function (grunt) {
         livereload: 35729
       },proxies: [{
         context: '/api', // the context of the data service
+
+        headers: {
+          Authorization: 'Bearer eyJhbGciOiJub25lIiwidHlwIjoiSldUIn0.eyJzdWIiOiJoYXJkeXJ6IiwiaWF0IjoiaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEjaW50ZWdlcjY0IiwiZXhwIjoxNDc5MTgyNzk1LCJpc3MiOiIxIn0.'
+        },
+
         //host: '192.168.1.44', // wherever the data service is running
-        host: 'localhost', // wherever the data service is running
+        host: '192.168.43.63', // wherever the data service is running
         //host: '10.8.13.238', // wherever the data service is running
-        port: 3000 , // the port that the data service is running on
+        port: 5000 , // the port that the data service is running on
 
       }],
       livereload: {
