@@ -41,9 +41,9 @@ angular
           controllerAs: 'comensalListado',
         })
         .state('comensal.listadoMisEventos',{
-          url:'/listado',
+          url:'/listadoMisEventos',
           templateUrl: 'views/comensal.listadoMisEventos.html',
-          controller: 'comensalListadoMisEventosCtrl',
+          controller: 'comensalListadoCtrl',
           controllerAs: 'comensalListado',
         })
         .state('comensal.evento-detalle',{
