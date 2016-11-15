@@ -222,20 +222,18 @@
   <div class="modal-dialog">
     <div class="loginmodal-container">
         <h1>Login to Your Account</h1><br>
-        <form name="form_login">
-            <input type="text" name="user" ng-model="auth.user.username" placeholder="Username">
-            <div ng-show="form_login.$submitted || form_login.name.$touched">
-              <span ng-show="form_login.user.$error.required">Escribe tu Nombre</span>
-          </div>
-            <input type="password" name="password" ng-model="auth.user.password" placeholder="Password">
-            <div ng-show="form_login.$submitted || form_login.name.$touched">
-              <span ng-show="form_login.password.$error.required">Escribe tu Nombre</span>
-          </div>
-            <input type="submit" name="login" class="login loginmodal-submit" value="Login" ng-click="auth.login();">
+        <form name="form_login" novalidate="">
+            <input type="text" name="user" ng-model="auth.user.username" placeholder="Username" required="">
+            <p ng-show="form_login.user.$invalid && form_login.user.$touched" class="help-block">Por favor, ingrese el Username.</p>
+
+            <input type="password" name="password" ng-model="auth.user.password" placeholder="Password" required="">
+            <p ng-show="form_login.password.$invalid && form_login.password.$touched" class="help-block">Por favor, ingrese el Password.</p>
+            
+            <input type="submit" name="login" class="login loginmodal-submit" value="Login" ng-click="auth.login();" ng-disabled="form_login.$invalid">
         </form>
 
         <div class="login-help">
-            <a href="#">Register</a> - <a href="#">Forgot Password</a>
+            <p>{{auth.LoginErrorMessage}}</p>
         </div>
     </div>
 </div>
@@ -245,47 +243,43 @@
   <div class="modal-dialog">
     <div class="loginmodal-container">
         <h1>Create your Account</h1><br>
-        <form name="form_signup">
+        <form name="form_signup" novalidate>
 
             <!-- nombre -->
             <input type="text" name="name" ng-model="auth.user.name" placeholder="Nombre" required>
-            <div ng-show="form_signup.$submitted || form_signup.name.$touched">
-              <span ng-show="form_signup.name.$error.required">Escribe tu Nombre</span>
-          </div>
+        <p ng-show="form_signup.name.$invalid && form_signup.name.$touched" class="help-block">Por favor, ingrese un Nombre.</p>
+
             
         <!-- Apellido -->
-          <input type="text" name="last" ng-model="auth.user.last" placeholder="Apellido">
-          <div ng-show="form_signup.$submitted || form_signup.name.$touched">
-              <span ng-show="form_signup.name.$error.required">Escribe tu Apellido</span>
-          </div>
+          <input type="text" name="last" ng-model="auth.user.last" placeholder="Apellido" required>
+        <p ng-show="form_signup.last.$invalid && form_signup.last.$touched" class="help-block">Por favor, ingrese un Apellido.</p>
 
           <!-- Direccion -->
-          <input type="text" name="address" ng-model="auth.user.address" placeholder="Direccion">
-           <div ng-show="form_signup.$submitted || form_signup.address.$touched">
-              <span ng-show="form_signup.address.$error.required">Escribe tu Direccion</span>
-          </div>
+          <input type="text" name="address" ng-model="auth.user.address" placeholder="Direccion" required>
+        <p ng-show="form_signup.address.$invalid && form_signup.address.$touched" class="help-block">Por favor, ingrese una Direccion.</p>
+
 
           <!-- Email -->
-          <input type="email" name="email" ng-model="auth.user.email" placeholder="Email">
-          <div ng-show="form_signup.$submitted || form_signup.email.$touched">
-              <span ng-show="form_signup.email.$error.required">Escribe tu Email</span>
-          </div>
+          <input type="email" name="email" ng-model="auth.user.email" placeholder="Email" required>
+        <p ng-show="form_signup.email.$invalid && form_signup.email.$touched" class="help-block">Por favor, ingrese un Email Valido.</p>
+
 
             <!-- USERNAME -->
-          <input type="text" name="username"  ng-model="auth.user.username" placeholder="Username">
-            <div ng-show="form_signup.$submitted || form_signup.username.$touched">
-              <span ng-show="form_signup.username.$error.required">Escribe tu Username</span>
-          </div>
+          <input type="text" name="username"  ng-model="auth.user.username" placeholder="Username" required>
+        <p ng-show="form_signup.username.$invalid && form_signup.username.$touched" class="help-block">Por favor, ingrese un Nombre de Usuario.</p>
 
             <!-- PASS 1 -->
-          <input type="password" name="pass"  ng-model="auth.user.pass1" placeholder="Password">
-          <input type="password" name="repeat-pass" ng-model="auth.user.pass2" placeholder="Repeat Password">
+          <input type="password" name="pass"  ng-model="auth.user.pass1" placeholder="Password" required>
+          <p ng-show="form_signup.pass.$invalid && form_signup.pass.$touched" class="help-block">Ingresa un password.</p>
 
-          <input type="submit" name="signup" class="login loginmodal-submit" value="Signup" ng-click="auth.signUp();">
+          <input type="password" name="repeat_pass" ng-model="auth.user.pass2" placeholder="Repeat Password" required>
+        <p ng-show="form_signup.repeat_pass.$invalid && form_signup.repeat_pass.$touched" class="help-block">Ingresa de nuevo el password.</p>
+
+          <input type="submit" name="signup" class="login loginmodal-submit" value="Signup" ng-click="auth.signUp();" ng-disabled="form_signup.$invalid">
       </form>
 
       <div class="login-help">
-        <a href="#">Register</a> - <a href="#">Forgot Password</a>
+      <p>{{auth.errorMessage}}</p>
     </div>
 </div>
 </div>

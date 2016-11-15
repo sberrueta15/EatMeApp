@@ -23,17 +23,15 @@
   'ngGeolocation',
   'angular-storage',
   'angular-jwt',
-  'uiRouterStyles'
+  'angular-loading-bar'
 
   ])
- .config(['$stateProvider','$urlRouterProvider','uiGmapGoogleMapApiProvider','jwtInterceptorProvider','$httpProvider','jwtOptionsProvider',
-  function ($stateProvider,$urlRouterProvider,GoogleMapApiProviders,jwtInterceptorProvider,$httpProvider,jwtOptionsProvider) {
+ .config(['$stateProvider','$urlRouterProvider','uiGmapGoogleMapApiProvider','jwtInterceptorProvider','$httpProvider','jwtOptionsProvider','cfpLoadingBarProvider',
+  function ($stateProvider,$urlRouterProvider,GoogleMapApiProviders,jwtInterceptorProvider,$httpProvider,jwtOptionsProvider,cfpLoadingBarProvider) {
 
 //-------------------------------
 // JWT
 //-------------------------------
-//
-//
 
 jwtOptionsProvider.config({
    whiteListedDomains: ['54.70.143.222', 'localhost']
@@ -45,6 +43,11 @@ jwtInterceptorProvider.tokenGetter = function(store) {
 // Add a simple interceptor that will fetch all requests and add the jwt token to its authorization header.
 $httpProvider.interceptors.push('jwtInterceptor');
 
+//
+// LOADING BAR
+//
+cfpLoadingBarProvider.includeSpinner = false; // or not
+cfpLoadingBarProvider.includeBar = true; // or not
 
 $stateProvider
 .state('home',{

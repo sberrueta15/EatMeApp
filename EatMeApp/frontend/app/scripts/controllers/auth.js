@@ -8,7 +8,7 @@
  * Controller of the EatMeApp
  */
  angular.module('EatMeApp')
- .controller('AuthCtrl',['AutenticationService','store','$state', function (AutenticationService,store,$state) {
+ .controller('AuthCtrl',['AutenticationService','store','$state','$timeout', function (AutenticationService,store,$state,$timeout) {
 
   var vm = this;
 
@@ -28,12 +28,14 @@
         function(data){
           store.set('access_token',data.access_token)
           store.set('currentCooker',data.user)
-          console.log(angular.element(document.querySelector('#login-modal')))
           $state.go('chef.dashboard',{},{reload:true})
         },
         function(error){
-          console.log("Error",error)
-        })
+         vm.LoginErrorMessage = "Error en las credenciales"
+         $timeout(function() {
+          vm.LoginErrorMessage = ""
+        }, 3000,true);
+       })
     }
     
 
@@ -43,28 +45,38 @@
         vm.user.password = vm.user.pass1;
 
         AutenticationService.signUp(vm.user)
-      .then(
-        function(data){
-        var obj = {}
-        obj.username = vm.user.username;
-        obj.password = vm.user.password;
+        .then(
+          function(data){
+            var obj = {}
+            obj.username = vm.user.username;
+            obj.password = vm.user.password;
 
-        AutenticationService.login(vm.user)
-      .then(
-        function(data){
-          store.set('access_token',data.access_token)
-          store.set('currentCooker',data.user)
-          console.log(angular.element(document.querySelector('#login-modal')))
-          $state.go('chef.dashboard',{},{reload:true})
-        },
-        function(error){
-          console.log("Error",error)
-        })
-        },
-        function(error){
-          console.log("Error",error)
-        })
+            AutenticationService.login(vm.user)
+            .then(
+              function(data){
+                store.set('access_token',data.access_token)
+                store.set('currentCooker',data.user)
+                $state.go('chef.dashboard',{},{reload:true})
+              },
+              function(error){
+                vm.LoginErrorMessage = "Error en las credenciales"
+                $timeout(function() {
+                  vm.LoginErrorMessage = ""
+                }, 3000,true);
+              })
+          },
+          function(error){
+            vm.LoginErrorMessage = "Error en las credenciales"
+            $timeout(function() {
+              vm.LoginErrorMessage = ""
+            }, 3000,true);
+          })
+      }else{
+        vm.errorMessage = "Los passwords no coinciden."
+        $timeout(function() {
+          vm.errorMessage = ""
+        }, 3000,true);
       }
-    	
+
     }
   }]);

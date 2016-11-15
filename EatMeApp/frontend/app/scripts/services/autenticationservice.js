@@ -17,7 +17,8 @@ angular.module('EatMeApp')
    }
 
    var vm = this;
-   var ip = 'http://localhost:5001'
+   var ip = ''
+   //var ip = 'http://localhost:5001'
    vm.base = "/api"
    vm.app = {app:'cooker'}
 

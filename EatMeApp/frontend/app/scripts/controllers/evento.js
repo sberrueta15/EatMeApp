@@ -8,14 +8,17 @@
 * Controller of the EatMeApp
 */
 angular.module('EatMeApp')
-  .controller('EventoCtrl', ['$scope', 'uiGmapGoogleMapApi', '$geolocation','eventoService',
-    function ($scope, uiGmapGoogleMapApi, $geolocation, eventoService) {
+  .controller('EventoCtrl', ['$scope', 'uiGmapGoogleMapApi', '$geolocation','eventoService','$timeout','$state',
+    function ($scope, uiGmapGoogleMapApi, $geolocation, eventoService,$timeout,$state) {
 
       // --------------------------------------------------------------------------------
       // Variables
       // --------------------------------------------------------------------------------
       var vm = this;
+      vm.eventoMensaje="Crear Evento!"
+      vm.eventoRedireccionMensaje=""
       vm.new_evento = {};
+       vm.new_evento.coords = {}
       vm.tipos_comida = [
         {name:"Celiaco",value:"Celiac"},
         {name:"Vegano",value:"Vegan"},
@@ -59,6 +62,12 @@ angular.module('EatMeApp')
       }).then(function (position) {
         vm.myCurrentPosition.latitude = position.coords.latitude;
         vm.myCurrentPosition.longitude = position.coords.longitude;
+
+
+         vm.new_evento.coords.latitude = position.coords.latitude;
+         vm.new_evento.coords.longitude = position.coords.longitude;
+         
+
         vm.map.markers = [
           {
             id: Date.now(),
@@ -76,6 +85,7 @@ angular.module('EatMeApp')
       };
 
       function crearEvento(){
+        vm.eventoMensaje="Creando..."
         /*
        * "Title":"Segundo Evento!",
        * "Description": "Vamo lo pibee!",
@@ -96,12 +106,14 @@ angular.module('EatMeApp')
         obj.totalTickets = vm.new_evento.cantidad_cupos;
         obj.locationX = vm.new_evento.coords.latitude;
         obj.locationY = vm.new_evento.coords.longitude;
-        console.log(obj);
         eventoService.crearEvento(obj)
           .then(
             function(succsess){
-              console.log("Evento creado!");
-            },
+              vm.eventoMensaje="Crear Evento!"
+              vm.eventoRedireccionMensaje="Sera redireccionado al Dashboard."
+              $timeout(function() {
+                $state.go('chef.dashboard')
+              }, 2000);            },
             function(error){
               console.log("error!",error);
             });

@@ -8,11 +8,14 @@
  * Controller of the EatMeApp
  */
 angular.module('EatMeApp')
-  .controller('DashboardCtrl',['CocineroService','$scope', function (CocineroService,$scope) {
+  .controller('DashboardCtrl',['CocineroService','$scope','$sce', function (CocineroService,$scope,$sce) {
     var vm = this;
 
     vm.getEventos = getEventos;
     vm.currentCooker = CocineroService.getCurrentCooker()
+    $scope.toBind = function(data){
+        return $sce.trustAsHtml(data);
+    }
 
     // Activate
     getEventos();

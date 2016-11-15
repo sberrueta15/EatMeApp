@@ -11,8 +11,8 @@
      .service('CocineroService',['$http', '$q', 'store',function ($http, $q, store) {
         // AngularJS will instantiate a singleton by calling "new" on this function
         var vm = this;
-    //var ip = 'http://127.0.0.1:3000/'
-    var ip = 'http://localhost:5001/'
+    var ip = ''
+    //var ip = 'http://localhost:5001/'
     var base = 'api/cooker/'
     var service = {
       getCocinero: getCocinero,

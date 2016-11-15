@@ -13,6 +13,7 @@ angular.module('EatMeApp')
 
     var vm = this;
     vm.evento=$stateParams.eventoObj;
+      vm.ta_toolbar = "[['bold','italics','underline'],['ul','ol']]";
 
     vm.myCurrentPosition = { latitude: -34.8894797, longitude: -56.1614878 };
       vm.evento.map = {
