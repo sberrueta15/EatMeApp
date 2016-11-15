@@ -2,25 +2,24 @@
 
 /**
  * @ngdoc function
- * @name EatMeApp.controller:EventoDetalleMisEventosCtrl
+ * @name comensalApp.controller:EventoDetalleMisEventosCtrl
  * @description
  * # EventoDetalleMisEventosCtrl
- * Controller of the EatMeApp
+ * Controller of the comensalApp
  */
 angular.module('comensalApp')
-  .controller('EventoDetalleMisEventosCtrl', ['$scope', 'uiGmapGoogleMapApi', '$geolocation','$stateParams','eventoService',
-    function ($scope, uiGmapGoogleMapApi, $geolocation, $stateParams,eventoService) {
+  .controller('EventoDetalleMisEventosCtrl', ['$scope', 'uiGmapGoogleMapApi', '$geolocation','$stateParams','eventoService','ComensalService',
+    function ($scope, uiGmapGoogleMapApi, $geolocation, $stateParams,eventoService,ComensalService) {
 
     var vm = this;
 
-
     //ACA VA EL ID POSTA HUE SUAREZ
-    vm.miId=2;
+    vm.miId=ComensalService.getCurrentCommensal().id;
 
     vm.evento=$stateParams.eventoObj;
     vm.estoyInscripto=$stateParams.estoyInscripto;
 
-      vm.Inscribirse = Inscribirse;
+      vm.inscribirse = inscribirse;
 
       vm.tipos_comida = [
         {name:"Celiaco",value:"Celiac"},
@@ -61,9 +60,8 @@ angular.module('comensalApp')
 */
 
 
-      function Inscribirse(){
-        console.log("asd");
-        eventoService.Inscribirse(vm.miId, vm.evento.id)
+      function inscribirse(){
+        eventoService.Inscribirse(vm.miId, vm.evento.id, vm.evento)
           .then(
             function(succsess){
               console.log("Evento creado!");

@@ -1,11 +1,7 @@
-
-
-<h1>Lis</h1>
-
-
-
+<div class="container">
+  
 <div class="form-group" >
-  <ui-gmap-google-map ng-if="comensalListado.map.center" center="comensalListado.map.center"  zoom="10" options="comensalListado.options" draggable="true">
+  <ui-gmap-google-map ng-if="comensalListado.map.center" center="comensalListado.map.center"  zoom="12" options="comensalListado.options" draggable="true">
     <ui-gmap-marker  ng-repeat="evento in comensalListado.eventos |filter:comensalListado.customFilter" click="comensalListado.eventoClicked()" coords="evento.marker.coords" icon="evento.marker.icon" idkey="evento.marker.id" >
 
       <ui-gmap-window ng-if="evento.showOpt" show="m.show" ng-cloak>
@@ -13,7 +9,7 @@
               <img src="http://lorempixel.com/200/200/food/{{$index}}/" alt="...">
               <div class="caption">
                 <h3>{{evento.title}}</h3>
-                <p class="max-p">{{evento.description}}</p><p>...</p>
+                <p class="max-p" ng-bind-html="toBind(evento.description)"></p>
                 <div>
                   <i class="fa fa-ticket" aria-hidden="true"></i>
                   <span>{{evento.totalTickets}}</span>
@@ -32,13 +28,20 @@
   </ui-gmap-google-map>
 </div>
 
-
-<div class="wrapper">
-  <input  ng-model="comensalListado.searchValue" type="text"  /><br />
-  <strong>Search in:</strong><br />
-</div>
-
-
+<div class="row m-b-1">
+         <div class="col-md-12">
+            <div id="custom-search-input">
+                <div class="input-group col-md-12">
+                    <input type="text" class="form-control input-lg" placeholder="Buscar" ng-model="comensalListado.searchValue" />
+                    <span class="input-group-btn">
+                        <button class="btn btn-info btn-lg" type="button">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+  </div>
 
 <div class="row">
   <div class="col-xs-6 col-md-3" ng-repeat="evento in comensalListado.eventos |filter:comensalListado.customFilter">
@@ -46,7 +49,7 @@
       <img src="http://lorempixel.com/200/200/food/{{$index}}/" alt="...">
       <div class="caption">
         <h3>{{evento.title}}</h3>
-        <p class="max-p">{{evento.description}}</p><p>...</p>
+        <p class="max-p" ng-bind-html="toBind(evento.description)"></p>
         <div>
           <i class="fa fa-ticket" aria-hidden="true"></i>
           <span>{{evento.totalTickets}}</span>
@@ -61,6 +64,8 @@
       </div>
     </div>
   </div>
+</div>
+
 </div>
 
 

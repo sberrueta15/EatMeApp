@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name comensalApp.controller:ComensalListadoCtrl
+ * @name comensalApp.controller:ComensalmiseventosCtrl
  * @description
- * # ComensalListadoCtrl
+ * # ComensalmiseventosCtrl
  * Controller of the comensalApp
  */
 angular.module('comensalApp')
-    .controller('comensalListadoCtrl',  ['$scope', 'uiGmapGoogleMapApi', '$geolocation','$stateParams','eventoService','$sce','ComensalService',
+  .controller('ComensalmiseventosCtrl', ['$scope', 'uiGmapGoogleMapApi', '$geolocation','$stateParams','eventoService','$sce','ComensalService',
       function ($scope, uiGmapGoogleMapApi, $geolocation, $stateParams,eventoService,$sce,ComensalService) {
         var vm = this;
         vm.currentPos=null;
@@ -20,8 +20,8 @@ angular.module('comensalApp')
         //ACA VA EL ID POSTA HUE SUAREZ
         vm.miId=ComensalService.getCurrentCommensal().id;
         vm.eventosAgregados={};
-        vm.getEventos = getEventos;
-        getEventos();
+        vm.misEventos = misEventos;
+        misEventos();
 
         $scope.toBind = function(data){
         return $sce.trustAsHtml(data);
@@ -71,6 +71,7 @@ angular.module('comensalApp')
      function misEventos(){
 
        eventoService.getMisEventos(vm.miId).then(function(success){
+        console.log(success);
          var eventosList=[];
          for (var x in success){
            var xEvento=success[x];
@@ -85,8 +86,6 @@ angular.module('comensalApp')
              vm.eventosAgregados[xEvento.id]=true;
            }
          }
-
-         console.log(vm.eventos)
          return vm.eventos;
        });
 
@@ -94,7 +93,7 @@ angular.module('comensalApp')
      }
 
 
-
+/*
       function getEventos(){
         eventoService.getMisEventos(vm.miId).then(function(success){
           var eventosList=[];
@@ -133,11 +132,11 @@ angular.module('comensalApp')
           });
         })
         //    vm.eventos = eventosList;
+*/
 
 
 
-
-      }
+      
        // $scope.map=vm.map;
         var keys = ["title", "description"];
 
